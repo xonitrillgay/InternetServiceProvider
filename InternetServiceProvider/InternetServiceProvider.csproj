@@ -83,11 +83,6 @@
     <Compile Include="Devices.Designer.cs">
       <DependentUpon>Devices.cs</DependentUpon>
     </Compile>
-    <Compile Include="InternetServiceProviderDBDataSet10.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InternetServiceProviderDBDataSet10.xsd</DependentUpon>
-    </Compile>
     <Compile Include="InternetServiceProviderDBDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,11 +108,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternetServiceProviderDBDataSet7.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InternetServiceProviderDBDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InternetServiceProviderDBDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="InternetServiceProviderDBDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Payments.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Payments.Designer.cs">
       <DependentUpon>Payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentsReport.Designer.cs">
+      <DependentUpon>PaymentsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Support_tickets.cs">
@@ -176,8 +187,12 @@
     <EmbeddedResource Include="Devices.resx">
       <DependentUpon>Devices.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payments.rdlc" />
     <EmbeddedResource Include="Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentsReport.resx">
+      <DependentUpon>PaymentsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Support_tickets.resx">
       <DependentUpon>Support_tickets.cs</DependentUpon>
@@ -225,17 +240,6 @@
     </None>
     <None Include="InternetServiceProviderDBDataSet1.xss">
       <DependentUpon>InternetServiceProviderDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="InternetServiceProviderDBDataSet10.xsc">
-      <DependentUpon>InternetServiceProviderDBDataSet10.xsd</DependentUpon>
-    </None>
-    <None Include="InternetServiceProviderDBDataSet10.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InternetServiceProviderDBDataSet10.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InternetServiceProviderDBDataSet10.xss">
-      <DependentUpon>InternetServiceProviderDBDataSet10.xsd</DependentUpon>
     </None>
     <None Include="InternetServiceProviderDBDataSet2.xsc">
       <DependentUpon>InternetServiceProviderDBDataSet2.xsd</DependentUpon>
@@ -302,6 +306,28 @@
     </None>
     <None Include="InternetServiceProviderDBDataSet7.xss">
       <DependentUpon>InternetServiceProviderDBDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet8.xsc">
+      <DependentUpon>InternetServiceProviderDBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InternetServiceProviderDBDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet8.xss">
+      <DependentUpon>InternetServiceProviderDBDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet9.xsc">
+      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InternetServiceProviderDBDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InternetServiceProviderDBDataSet9.xss">
+      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

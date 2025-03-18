@@ -19,6 +19,11 @@ namespace InternetServiceProvider
 
         private void TechniciansReport_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet8.technicians' table. You can move, or remove it, as needed.
+            this.techniciansTableAdapter.Fill(this.internetServiceProviderDBDataSet8.technicians);
+            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
             this.reportViewer1.RefreshReport();
         }
     }
