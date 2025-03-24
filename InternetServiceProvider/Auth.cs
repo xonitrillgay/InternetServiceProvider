@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace InternetServiceProvider
 {
@@ -26,9 +27,11 @@ namespace InternetServiceProvider
         {
             using (MD5 md5 = MD5.Create())
             {
+                // Convert the input string to a byte array and compute the hash
                 byte[] inputBytes = Encoding.UTF8.GetBytes(input);
                 byte[] hashBytes = md5.ComputeHash(inputBytes);
 
+                // Convert the byte array to hexadecimal string
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < hashBytes.Length; i++)
                 {
@@ -43,11 +46,13 @@ namespace InternetServiceProvider
             var loginUser = textBoxLogin.Text;
             var passwordUser = textBoxPassword.Text;
 
+            // Hash the password for comparison
             string hashedPassword = GetMD5Hash(passwordUser);
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
+            // Use parameterized query to prevent SQL injection
             string query = "SELECT id_user, login_user, password_user FROM register WHERE login_user = @login AND password_user = @password";
 
             SqlCommand command = new SqlCommand(query, database.getConnection());

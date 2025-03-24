@@ -57,19 +57,22 @@ namespace InternetServiceProvider
                 return;
             }
 
+            // Check if user already exists
             if (checkUser())
             {
                 MessageBox.Show("Користувач з таким логіном вже існує", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Hash the password using MD5
             string hashedPassword = GetMD5Hash(password);
 
+            // Use parameterized query to prevent SQL injection
             string query = "INSERT INTO register (login_user, password_user) VALUES (@login, @password)";
 
             SqlCommand command = new SqlCommand(query, database.getConnection());
             command.Parameters.AddWithValue("@login", login);
-            command.Parameters.AddWithValue("@password", hashedPassword);
+            command.Parameters.AddWithValue("@password", hashedPassword); // Use the hashed password
 
             database.openConnection();
 
