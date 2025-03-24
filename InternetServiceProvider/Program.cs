@@ -16,7 +16,7 @@ namespace InternetServiceProvider
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Technicians());
+            Application.Run(new Auth());
         }
     }
 }
