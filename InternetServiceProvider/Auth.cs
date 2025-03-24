@@ -59,16 +59,29 @@ namespace InternetServiceProvider
 
         private void closedEye_Click(object sender, EventArgs e)
         {
-            textBoxPassword.PasswordChar = '*'; // Hide the password
+            textBoxPassword.PasswordChar = '*';
             closedEye.Visible = false;
             eyeOpen.Visible = true;
         }
 
         private void eyeOpen_Click(object sender, EventArgs e)
         {
-            textBoxPassword.PasswordChar = '\0'; // Show the password
+            textBoxPassword.PasswordChar = '\0';
             eyeOpen.Visible = false;
             closedEye.Visible = true;
+        }
+
+        private void regLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Registration frm2 = new Registration();
+            frm2.Show();
+            this.Hide();
+        }
+
+        private void clearPictureBox_Click(object sender, EventArgs e)
+        {
+            textBoxLogin.Text = "";
+            textBoxPassword.Text = "";
         }
     }
 }

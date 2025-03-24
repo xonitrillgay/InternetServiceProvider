@@ -136,6 +136,12 @@
     <Compile Include="PaymentsReport.Designer.cs">
       <DependentUpon>PaymentsReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Support_tickets.cs">
       <SubType>Form</SubType>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PaymentsReport.resx">
       <DependentUpon>PaymentsReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Support_tickets.resx">
       <DependentUpon>Support_tickets.cs</DependentUpon>
