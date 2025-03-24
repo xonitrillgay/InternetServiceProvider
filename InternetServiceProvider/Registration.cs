@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace InternetServiceProvider
 {
@@ -19,6 +20,22 @@ namespace InternetServiceProvider
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private string GetMD5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
         }
 
         private void Registration_Load(object sender, EventArgs e)
@@ -47,9 +64,15 @@ namespace InternetServiceProvider
                 return;
             }
 
-            string query = $"insert into register (login_user, password_user) values ('{login}', '{password}')";
+            // Hash the password using MD5
+            string hashedPassword = GetMD5Hash(password);
+
+            // Use parameterized query to prevent SQL injection
+            string query = "INSERT INTO register (login_user, password_user) VALUES (@login, @password)";
 
             SqlCommand command = new SqlCommand(query, database.getConnection());
+            command.Parameters.AddWithValue("@login", login);
+            command.Parameters.AddWithValue("@password", hashedPassword); // Use the hashed password
 
             database.openConnection();
 
@@ -74,7 +97,7 @@ namespace InternetServiceProvider
             var password = textBoxPassword.Text;
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-            string query = $"select * from register where login_user = '{login}' and password_user = '{password}'";
+            string query = $"select * from register where login_user = '{login}'";
             SqlCommand command = new SqlCommand(query, database.getConnection());
             adapter.SelectCommand = command;
             adapter.Fill(table);

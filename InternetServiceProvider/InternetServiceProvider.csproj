@@ -124,6 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
     </Compile>
+    <Compile Include="md5.cs" />
     <Compile Include="Payments.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -5,9 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace InternetServiceProvider
 {
@@ -21,22 +23,48 @@ namespace InternetServiceProvider
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private string GetMD5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                // Convert the input string to a byte array and compute the hash
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
+
         private void okButton_Click(object sender, EventArgs e)
         {
             var loginUser = textBoxLogin.Text;
             var passwordUser = textBoxPassword.Text;
 
+            // Hash the password for comparison
+            string hashedPassword = GetMD5Hash(passwordUser);
+
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string query = $"select id_user, login_user, password_user from register where login_user = '{loginUser}' and password_user = '{passwordUser}'";
+            // Use parameterized query to prevent SQL injection
+            string query = "SELECT id_user, login_user, password_user FROM register WHERE login_user = @login AND password_user = @password";
 
             SqlCommand command = new SqlCommand(query, database.getConnection());
+            command.Parameters.AddWithValue("@login", loginUser);
+            command.Parameters.AddWithValue("@password", hashedPassword);
 
+            database.openConnection();
             adapter.SelectCommand = command;
             adapter.Fill(table);
+            database.closeConnection();
 
-            if(table.Rows.Count == 1)
+            if (table.Rows.Count == 1)
             {
                 MessageBox.Show("Ви успішно увійшли в систему", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Technicians frm1 = new Technicians();
