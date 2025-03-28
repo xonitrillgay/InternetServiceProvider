@@ -72,6 +72,7 @@
             this.абонентиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.платежіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.report = new System.Windows.Forms.Button();
+            this.адмінпанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techniciansBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet)).BeginInit();
@@ -374,7 +375,8 @@
             this.сервісToolStripMenuItem,
             this.фахівціToolStripMenuItem,
             this.абонентиToolStripMenuItem,
-            this.платежіToolStripMenuItem});
+            this.платежіToolStripMenuItem,
+            this.адмінпанельToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -467,6 +469,13 @@
             this.report.UseVisualStyleBackColor = true;
             this.report.Click += new System.EventHandler(this.report_Click);
             // 
+            // адмінпанельToolStripMenuItem
+            // 
+            this.адмінпанельToolStripMenuItem.Name = "адмінпанельToolStripMenuItem";
+            this.адмінпанельToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.адмінпанельToolStripMenuItem.Text = "Адмін-панель";
+            this.адмінпанельToolStripMenuItem.Click += new System.EventHandler(this.адмінпанельToolStripMenuItem_Click);
+            // 
             // Technicians
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +550,7 @@
         private System.Windows.Forms.ToolStripMenuItem платежіToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem вийтиToolStripMenuItem;
         private System.Windows.Forms.Button report;
+        private System.Windows.Forms.ToolStripMenuItem адмінпанельToolStripMenuItem;
     }
 }
 

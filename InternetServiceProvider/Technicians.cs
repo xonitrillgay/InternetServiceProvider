@@ -22,14 +22,22 @@ namespace InternetServiceProvider
 
     public partial class Technicians: Form
     {
+        private string userRole;
+
         DataBase database = new DataBase();
 
         int selectedRow;
 
-        public Technicians()
+        public Technicians(string role)
         {
             InitializeComponent();
+            userRole = role;
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        public Technicians() : this("user")
+        {
+            
         }
 
         private void BeautifyDataGridView()
@@ -77,6 +85,7 @@ namespace InternetServiceProvider
         {
             // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet.technicians' table. You can move, or remove it, as needed.
             this.techniciansTableAdapter.Fill(this.internetServiceProviderDBDataSet.technicians);
+            адмінпанельToolStripMenuItem.Visible = (userRole == "admin");
 
             BeautifyDataGridView();
         }
@@ -102,6 +111,7 @@ namespace InternetServiceProvider
         {
 
         }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -409,6 +419,12 @@ namespace InternetServiceProvider
         {
             TechniciansReport techreportform = new TechniciansReport();
             techreportform.Show();
+        }
+
+        private void адмінпанельToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm();
+            adminForm.ShowDialog();
         }
     }
 }
