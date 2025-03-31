@@ -16,6 +16,18 @@ namespace InternetServiceProvider
         DataBase database = new DataBase();
         private int selectedRow;
 
+        public class ComboBoxItem
+        {
+            public string Text { get; set; }
+            public string Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
+        }
+
+
         public Abonents()
         {
             InitializeComponent();
@@ -24,46 +36,60 @@ namespace InternetServiceProvider
 
         private void BeautifyDataGridView()
         {
-            // Колір фону таблиці
+            if (dataGridView1.Columns.Count == 0)
+                return;
+
             dataGridView1.BackgroundColor = Color.White;
 
-            // Колір заголовків стовпців
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215); // Синій
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dataGridView1.EnableHeadersVisualStyles = false; // Вимикаємо стандартні стилі Windows
+            dataGridView1.EnableHeadersVisualStyles = false;
 
-            // Колір рядків
             dataGridView1.DefaultCellStyle.BackColor = Color.White;
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 9);
 
-            // Колір вибраного рядка
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 174, 219); // Блакитний
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 174, 219);
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
 
-            // Альтернативні кольори для рядків (зебрування)
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255); // Світло-блакитний
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255);
 
-            // Задаємо назви стовпців
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Ім'я";
             dataGridView1.Columns[2].HeaderText = "Прізвище";
             dataGridView1.Columns[3].HeaderText = "Телефон";
             dataGridView1.Columns[4].HeaderText = "Email";
             dataGridView1.Columns[5].HeaderText = "Адреса";
-            dataGridView1.Columns[6].HeaderText = "ID плану";
-            dataGridView1.Columns[7].HeaderText = "ID обладнання";
+            dataGridView1.Columns[6].HeaderText = "Тариф";
+            dataGridView1.Columns[7].HeaderText = "Обладнання";
 
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
 
-            // Вирівнювання тексту в заголовках
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            int totalColumnWidth = 0;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                if (col.Visible)
+                {
+                    col.Width += 10;
+                    totalColumnWidth += col.Width;
+                }
+            }
+
+            if (totalColumnWidth < dataGridView1.Width && dataGridView1.Columns.Cast<DataGridViewColumn>().Any(c => c.Visible))
+            {
+                var lastVisibleColumn = dataGridView1.Columns.Cast<DataGridViewColumn>().Last(c => c.Visible);
+                lastVisibleColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Вирівнювання тексту в комірках
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // active по центру
-
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void Abonents_Load(object sender, EventArgs e)
@@ -82,7 +108,12 @@ namespace InternetServiceProvider
 
             try
             {
-                string query = "SELECT * FROM [InternetServiceProviderDB].[service].[abonents]";
+                string query = @"SELECT a.abonent_id, a.first_name, a.last_name, a.phone, a.email, 
+                a.address, p.plan_name, d.device_name, a.plan_id, a.device_id
+                FROM [InternetServiceProviderDB].[service].[abonents] a
+                LEFT JOIN [InternetServiceProviderDB].[service].[plans] p ON a.plan_id = p.plan_id
+                LEFT JOIN [InternetServiceProviderDB].[service].[devices] d ON a.device_id = d.device_id";
+
                 using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                 {
                     using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -90,12 +121,17 @@ namespace InternetServiceProvider
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
                         dataGridView1.DataSource = dataTable;
+
+                        if (dataGridView1.Columns["plan_id"] != null)
+                            dataGridView1.Columns["plan_id"].Visible = false;
+                        if (dataGridView1.Columns["device_id"] != null)
+                            dataGridView1.Columns["device_id"].Visible = false;
                     }
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show($"Error refreshing abonents data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка оновлення інформації: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -108,21 +144,29 @@ namespace InternetServiceProvider
             database.openConnection();
             try
             {
-                string query = "SELECT * FROM [InternetServiceProviderDB].[service].[plans]";
+                string query = "SELECT plan_id, plan_name FROM [InternetServiceProviderDB].[service].[plans]";
                 using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        comboBoxPlanID.Items.Clear();
                         while (reader.Read())
                         {
-                            comboBoxPlanID.Items.Add(reader["plan_id"].ToString());
+                            comboBoxPlanID.Items.Add(new ComboBoxItem
+                            {
+                                Text = reader["plan_name"].ToString(),
+                                Value = reader["plan_id"].ToString()
+                            });
                         }
                     }
                 }
+
+                comboBoxPlanID.DisplayMember = "Text";
+                comboBoxPlanID.ValueMember = "Value";
             }
             catch (SqlException ex)
             {
-                MessageBox.Show($"Error filling combobox: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка заповнення комбобоксу: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -135,17 +179,25 @@ namespace InternetServiceProvider
             database.openConnection();
             try
             {
-                string query = "SELECT *  FROM [InternetServiceProviderDB].[service].[devices]";
+                string query = "SELECT device_id, device_name FROM [InternetServiceProviderDB].[service].[devices]";
                 using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        comboBoxDeviceID.Items.Clear();
                         while (reader.Read())
                         {
-                            comboBoxDeviceID.Items.Add(reader["device_id"].ToString());
+                            comboBoxDeviceID.Items.Add(new ComboBoxItem
+                            {
+                                Text = reader["device_name"].ToString(),
+                                Value = reader["device_id"].ToString()
+                            });
                         }
                     }
                 }
+
+                comboBoxDeviceID.DisplayMember = "Text";
+                comboBoxDeviceID.ValueMember = "Value";
             }
             catch (SqlException ex)
             {
@@ -164,8 +216,21 @@ namespace InternetServiceProvider
             string abonent_phone = textBoxTelephone.Text;
             string abonent_email = textBoxEmail.Text;
             string abonent_address = textBoxAddress.Text;
-            string plan_id = comboBoxPlanID.Text;
-            string device_id = comboBoxDeviceID.Text;
+
+            string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
+            string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
+
+            if (string.IsNullOrWhiteSpace(first_name) ||
+                string.IsNullOrWhiteSpace(last_name) ||
+                string.IsNullOrWhiteSpace(abonent_phone) ||
+                string.IsNullOrWhiteSpace(abonent_email) ||
+                string.IsNullOrWhiteSpace(abonent_address) ||
+                string.IsNullOrWhiteSpace(plan_id) ||
+                string.IsNullOrWhiteSpace(device_id))
+            {
+                MessageBox.Show("Всі поля обов'язкові для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             database.openConnection();
 
@@ -195,6 +260,7 @@ namespace InternetServiceProvider
                 RefreshAbonentsDataGrid();
             }
         }
+
 
         private void pictureBoxDelete_Click(object sender, EventArgs e)
         {
@@ -262,10 +328,9 @@ namespace InternetServiceProvider
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Check if a row is selected in the DataGridView
             if (dataGridView1.CurrentCell == null)
             {
-                MessageBox.Show("Виберіть рядок для онолвення!", "Помилка",
+                MessageBox.Show("Виберіть рядок для оновлення!", "Помилка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -294,16 +359,15 @@ namespace InternetServiceProvider
 
             database.openConnection();
 
-            // Get the updated values from text boxes
             string first_name = textBoxName.Text;
             string last_name = textBoxLastName.Text;
             string abonent_phone = textBoxTelephone.Text;
             string abonent_email = textBoxEmail.Text;
             string abonent_address = textBoxAddress.Text;
-            string plan_id = comboBoxPlanID.Text;
-            string device_id = comboBoxDeviceID.Text;
 
-            // Check if any field is empty
+            string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
+            string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
+
             if (string.IsNullOrWhiteSpace(first_name) ||
                 string.IsNullOrWhiteSpace(last_name) ||
                 string.IsNullOrWhiteSpace(abonent_phone) ||
@@ -316,19 +380,17 @@ namespace InternetServiceProvider
                 return;
             }
 
-            database.openConnection();
-
             try
             {
                 string query = @"UPDATE [InternetServiceProviderDB].[service].[abonents] 
-                        SET first_name = @first_name, 
-                            last_name = @last_name, 
-                            phone = @abonent_phone, 
-                            email = @abonent_email, 
-                            address = @abonent_address, 
-                            plan_id = @plan_id, 
-                            device_id = @device_id 
-                        WHERE abonent_id = @abonent_id";
+                SET first_name = @first_name, 
+                    last_name = @last_name, 
+                    phone = @abonent_phone, 
+                    email = @abonent_email, 
+                    address = @abonent_address, 
+                    plan_id = @plan_id, 
+                    device_id = @device_id 
+                WHERE abonent_id = @abonent_id";
 
                 using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                 {
@@ -347,7 +409,6 @@ namespace InternetServiceProvider
                     {
                         MessageBox.Show("Абонента було успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Clear input fields after successful update
                         textBoxName.Clear();
                         textBoxLastName.Clear();
                         textBoxTelephone.Clear();
@@ -369,7 +430,7 @@ namespace InternetServiceProvider
             finally
             {
                 database.closeConnection();
-                RefreshAbonentsDataGrid(); // Refresh the DataGridView to reflect changes
+                RefreshAbonentsDataGrid();
             }
         }
 
@@ -381,14 +442,55 @@ namespace InternetServiceProvider
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
 
-                textBoxName.Text = row.Cells[1].Value.ToString();
-                textBoxLastName.Text = row.Cells[2].Value.ToString();
-                textBoxTelephone.Text = row.Cells[3].Value.ToString();
-                textBoxEmail.Text = row.Cells[4].Value.ToString();
-                textBoxAddress.Text = row.Cells[5].Value.ToString();
-                comboBoxPlanID.Text = row.Cells[6].Value.ToString();
-                comboBoxDeviceID.Text = row.Cells[7].Value.ToString();
+                textBoxName.Text = row.Cells[1].Value?.ToString() ?? "";
+                textBoxLastName.Text = row.Cells[2].Value?.ToString() ?? "";
+                textBoxTelephone.Text = row.Cells[3].Value?.ToString() ?? "";
+                textBoxEmail.Text = row.Cells[4].Value?.ToString() ?? "";
+                textBoxAddress.Text = row.Cells[5].Value?.ToString() ?? "";
+
+                string planId = row.Cells["planidDataGridViewTextBoxColumn"].Value?.ToString() ?? "";
+                string deviceId = row.Cells["deviceidDataGridViewTextBoxColumn"].Value?.ToString() ?? "";
+
+                SelectComboBoxItemByValue(comboBoxPlanID, planId);
+                SelectComboBoxItemByValue(comboBoxDeviceID, deviceId);
             }
+        }
+
+        private void SelectComboBoxItemByValue(ComboBox comboBox, string value)
+        {
+            bool itemFound = false;
+            for (int i = 0; i < comboBox.Items.Count; i++)
+            {
+                ComboBoxItem item = comboBox.Items[i] as ComboBoxItem;
+                if (item != null && item.Value == value)
+                {
+                    comboBox.SelectedIndex = i;
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (!itemFound)
+            {
+                comboBox.SelectedIndex = -1;
+                MessageBox.Show($"Item '{value}' not found in {comboBox.Name}.", "Item Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ClearFields()
+        {
+            textBoxName.Text = "";
+            textBoxLastName.Text = "";
+            textBoxTelephone.Text = "";
+            textBoxEmail.Text = "";
+            textBoxAddress.Text = "";
+            comboBoxPlanID.SelectedIndex = -1;
+            comboBoxDeviceID.SelectedIndex = -1;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

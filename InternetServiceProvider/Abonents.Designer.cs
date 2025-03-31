@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Abonents));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.abonentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.abonent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,16 +53,17 @@
             this.email = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDeviceID = new System.Windows.Forms.Label();
+            this.comboBoxDeviceID = new System.Windows.Forms.ComboBox();
+            this.labelPlanID = new System.Windows.Forms.Label();
+            this.comboBoxPlanID = new System.Windows.Forms.ComboBox();
             this.pictureBoxCreate = new System.Windows.Forms.PictureBox();
             this.pictureBoxDelete = new System.Windows.Forms.PictureBox();
             this.labelCreate = new System.Windows.Forms.Label();
             this.labelDelete = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelUpdate = new System.Windows.Forms.Label();
-            this.comboBoxPlanID = new System.Windows.Forms.ComboBox();
-            this.comboBoxDeviceID = new System.Windows.Forms.ComboBox();
-            this.labelPlanID = new System.Windows.Forms.Label();
-            this.labelDeviceID = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet6)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -81,7 +83,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.abonentidDataGridViewTextBoxColumn,
+            this.abonent_id,
             this.firstnameDataGridViewTextBoxColumn,
             this.lastnameDataGridViewTextBoxColumn,
             this.phoneDataGridViewTextBoxColumn,
@@ -99,12 +101,12 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // abonentidDataGridViewTextBoxColumn
+            // abonent_id
             // 
-            this.abonentidDataGridViewTextBoxColumn.DataPropertyName = "abonent_id";
-            this.abonentidDataGridViewTextBoxColumn.HeaderText = "abonent_id";
-            this.abonentidDataGridViewTextBoxColumn.Name = "abonentidDataGridViewTextBoxColumn";
-            this.abonentidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.abonent_id.DataPropertyName = "abonent_id";
+            this.abonent_id.HeaderText = "abonent_id";
+            this.abonent_id.Name = "abonent_id";
+            this.abonent_id.ReadOnly = true;
             // 
             // firstnameDataGridViewTextBoxColumn
             // 
@@ -269,79 +271,15 @@
             this.panel1.Size = new System.Drawing.Size(391, 224);
             this.panel1.TabIndex = 11;
             // 
-            // pictureBoxCreate
+            // labelDeviceID
             // 
-            this.pictureBoxCreate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxCreate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCreate.Image")));
-            this.pictureBoxCreate.Location = new System.Drawing.Point(444, 23);
-            this.pictureBoxCreate.Name = "pictureBoxCreate";
-            this.pictureBoxCreate.Size = new System.Drawing.Size(122, 132);
-            this.pictureBoxCreate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCreate.TabIndex = 14;
-            this.pictureBoxCreate.TabStop = false;
-            this.pictureBoxCreate.Click += new System.EventHandler(this.pictureBoxCreate_Click);
-            // 
-            // pictureBoxDelete
-            // 
-            this.pictureBoxDelete.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxDelete.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDelete.Image")));
-            this.pictureBoxDelete.Location = new System.Drawing.Point(586, 24);
-            this.pictureBoxDelete.Name = "pictureBoxDelete";
-            this.pictureBoxDelete.Size = new System.Drawing.Size(123, 131);
-            this.pictureBoxDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxDelete.TabIndex = 15;
-            this.pictureBoxDelete.TabStop = false;
-            this.pictureBoxDelete.Click += new System.EventHandler(this.pictureBoxDelete_Click);
-            // 
-            // labelCreate
-            // 
-            this.labelCreate.AutoSize = true;
-            this.labelCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCreate.Location = new System.Drawing.Point(479, 164);
-            this.labelCreate.Name = "labelCreate";
-            this.labelCreate.Size = new System.Drawing.Size(55, 16);
-            this.labelCreate.TabIndex = 16;
-            this.labelCreate.Text = "Додати";
-            // 
-            // labelDelete
-            // 
-            this.labelDelete.AutoSize = true;
-            this.labelDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDelete.Location = new System.Drawing.Point(613, 164);
-            this.labelDelete.Name = "labelDelete";
-            this.labelDelete.Size = new System.Drawing.Size(71, 16);
-            this.labelDelete.TabIndex = 17;
-            this.labelDelete.Text = "Видалити";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(728, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(131, 132);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // labelUpdate
-            // 
-            this.labelUpdate.AutoSize = true;
-            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUpdate.Location = new System.Drawing.Point(762, 164);
-            this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(64, 16);
-            this.labelUpdate.TabIndex = 19;
-            this.labelUpdate.Text = "Оновити";
-            // 
-            // comboBoxPlanID
-            // 
-            this.comboBoxPlanID.FormattingEnabled = true;
-            this.comboBoxPlanID.Location = new System.Drawing.Point(179, 152);
-            this.comboBoxPlanID.Name = "comboBoxPlanID";
-            this.comboBoxPlanID.Size = new System.Drawing.Size(185, 21);
-            this.comboBoxPlanID.TabIndex = 11;
+            this.labelDeviceID.AutoSize = true;
+            this.labelDeviceID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDeviceID.Location = new System.Drawing.Point(17, 182);
+            this.labelDeviceID.Name = "labelDeviceID";
+            this.labelDeviceID.Size = new System.Drawing.Size(82, 18);
+            this.labelDeviceID.TabIndex = 21;
+            this.labelDeviceID.Text = "ID девайсу";
             // 
             // comboBoxDeviceID
             // 
@@ -361,21 +299,97 @@
             this.labelPlanID.TabIndex = 20;
             this.labelPlanID.Text = "Інтернет-план";
             // 
-            // labelDeviceID
+            // comboBoxPlanID
             // 
-            this.labelDeviceID.AutoSize = true;
-            this.labelDeviceID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDeviceID.Location = new System.Drawing.Point(17, 182);
-            this.labelDeviceID.Name = "labelDeviceID";
-            this.labelDeviceID.Size = new System.Drawing.Size(82, 18);
-            this.labelDeviceID.TabIndex = 21;
-            this.labelDeviceID.Text = "ID девайсу";
+            this.comboBoxPlanID.FormattingEnabled = true;
+            this.comboBoxPlanID.Location = new System.Drawing.Point(179, 152);
+            this.comboBoxPlanID.Name = "comboBoxPlanID";
+            this.comboBoxPlanID.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxPlanID.TabIndex = 11;
+            // 
+            // pictureBoxCreate
+            // 
+            this.pictureBoxCreate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxCreate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxCreate.Image")));
+            this.pictureBoxCreate.Location = new System.Drawing.Point(446, 65);
+            this.pictureBoxCreate.Name = "pictureBoxCreate";
+            this.pictureBoxCreate.Size = new System.Drawing.Size(122, 132);
+            this.pictureBoxCreate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCreate.TabIndex = 14;
+            this.pictureBoxCreate.TabStop = false;
+            this.pictureBoxCreate.Click += new System.EventHandler(this.pictureBoxCreate_Click);
+            // 
+            // pictureBoxDelete
+            // 
+            this.pictureBoxDelete.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxDelete.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDelete.Image")));
+            this.pictureBoxDelete.Location = new System.Drawing.Point(588, 66);
+            this.pictureBoxDelete.Name = "pictureBoxDelete";
+            this.pictureBoxDelete.Size = new System.Drawing.Size(123, 131);
+            this.pictureBoxDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDelete.TabIndex = 15;
+            this.pictureBoxDelete.TabStop = false;
+            this.pictureBoxDelete.Click += new System.EventHandler(this.pictureBoxDelete_Click);
+            // 
+            // labelCreate
+            // 
+            this.labelCreate.AutoSize = true;
+            this.labelCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCreate.Location = new System.Drawing.Point(481, 206);
+            this.labelCreate.Name = "labelCreate";
+            this.labelCreate.Size = new System.Drawing.Size(55, 16);
+            this.labelCreate.TabIndex = 16;
+            this.labelCreate.Text = "Додати";
+            // 
+            // labelDelete
+            // 
+            this.labelDelete.AutoSize = true;
+            this.labelDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDelete.Location = new System.Drawing.Point(615, 206);
+            this.labelDelete.Name = "labelDelete";
+            this.labelDelete.Size = new System.Drawing.Size(71, 16);
+            this.labelDelete.TabIndex = 17;
+            this.labelDelete.Text = "Видалити";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(730, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(131, 132);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdate.Location = new System.Drawing.Point(764, 206);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(64, 16);
+            this.labelUpdate.TabIndex = 19;
+            this.labelUpdate.Text = "Оновити";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(808, 10);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(53, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Abonents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 450);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.labelUpdate);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelDelete);
@@ -395,6 +409,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCreate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,14 +421,6 @@
         private InternetServiceProviderDBDataSet6 internetServiceProviderDBDataSet6;
         private System.Windows.Forms.BindingSource abonentsBindingSource;
         private InternetServiceProviderDBDataSet6TableAdapters.abonentsTableAdapter abonentsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn abonentidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn planidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deviceidDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.TextBox textBoxTelephone;
@@ -435,5 +442,14 @@
         private System.Windows.Forms.ComboBox comboBoxDeviceID;
         private System.Windows.Forms.Label labelDeviceID;
         private System.Windows.Forms.Label labelPlanID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn abonent_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn planidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
