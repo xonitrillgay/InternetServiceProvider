@@ -50,30 +50,31 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.authorization);
             this.panel1.Controls.Add(this.clearPictureBox);
-            this.panel1.Location = new System.Drawing.Point(211, 42);
+            this.panel1.Location = new System.Drawing.Point(341, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 71);
+            this.panel1.Size = new System.Drawing.Size(428, 71);
             this.panel1.TabIndex = 0;
             // 
             // authorization
             // 
             this.authorization.AutoSize = true;
-            this.authorization.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.authorization.Font = new System.Drawing.Font("Georgia", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.authorization.Location = new System.Drawing.Point(19, 15);
             this.authorization.Name = "authorization";
-            this.authorization.Size = new System.Drawing.Size(232, 42);
+            this.authorization.Size = new System.Drawing.Size(234, 43);
             this.authorization.TabIndex = 3;
             this.authorization.Text = "Авторизація";
             // 
             // clearPictureBox
             // 
             this.clearPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("clearPictureBox.Image")));
-            this.clearPictureBox.Location = new System.Drawing.Point(480, 15);
+            this.clearPictureBox.Location = new System.Drawing.Point(350, 15);
             this.clearPictureBox.Name = "clearPictureBox";
-            this.clearPictureBox.Size = new System.Drawing.Size(55, 49);
+            this.clearPictureBox.Size = new System.Drawing.Size(43, 42);
             this.clearPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.clearPictureBox.TabIndex = 12;
             this.clearPictureBox.TabStop = false;
@@ -82,41 +83,43 @@
             // login
             // 
             this.login.AutoSize = true;
-            this.login.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login.Location = new System.Drawing.Point(230, 208);
+            this.login.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login.Location = new System.Drawing.Point(377, 201);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(74, 29);
+            this.login.Size = new System.Drawing.Size(77, 29);
             this.login.TabIndex = 1;
             this.login.Text = "Логін";
             // 
             // password
             // 
             this.password.AutoSize = true;
-            this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password.Location = new System.Drawing.Point(230, 239);
+            this.password.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.Location = new System.Drawing.Point(377, 236);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(99, 29);
+            this.password.Size = new System.Drawing.Size(97, 29);
             this.password.TabIndex = 2;
             this.password.Text = "Пароль";
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(341, 217);
+            this.textBoxLogin.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLogin.Location = new System.Drawing.Point(480, 201);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(210, 20);
+            this.textBoxLogin.Size = new System.Drawing.Size(210, 29);
             this.textBoxLogin.TabIndex = 6;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(341, 248);
+            this.textBoxPassword.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPassword.Location = new System.Drawing.Point(480, 236);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(210, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(210, 29);
             this.textBoxPassword.TabIndex = 7;
             // 
             // okButton
             // 
-            this.okButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.okButton.Location = new System.Drawing.Point(331, 329);
+            this.okButton.Font = new System.Drawing.Font("Georgia", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.okButton.Location = new System.Drawing.Point(468, 327);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(165, 42);
             this.okButton.TabIndex = 8;
@@ -127,9 +130,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(31, 84);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 151);
+            this.pictureBox1.Size = new System.Drawing.Size(277, 285);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -137,7 +140,7 @@
             // eyeOpen
             // 
             this.eyeOpen.Image = ((System.Drawing.Image)(resources.GetObject("eyeOpen.Image")));
-            this.eyeOpen.Location = new System.Drawing.Point(574, 239);
+            this.eyeOpen.Location = new System.Drawing.Point(701, 230);
             this.eyeOpen.Name = "eyeOpen";
             this.eyeOpen.Size = new System.Drawing.Size(35, 35);
             this.eyeOpen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,10 +151,10 @@
             // regLabel
             // 
             this.regLabel.AutoSize = true;
-            this.regLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.regLabel.Location = new System.Drawing.Point(372, 374);
+            this.regLabel.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regLabel.Location = new System.Drawing.Point(509, 372);
             this.regLabel.Name = "regLabel";
-            this.regLabel.Size = new System.Drawing.Size(84, 18);
+            this.regLabel.Size = new System.Drawing.Size(83, 18);
             this.regLabel.TabIndex = 12;
             this.regLabel.TabStop = true;
             this.regLabel.Text = "Реєстрація";
@@ -160,7 +163,7 @@
             // closedEye
             // 
             this.closedEye.Image = ((System.Drawing.Image)(resources.GetObject("closedEye.Image")));
-            this.closedEye.Location = new System.Drawing.Point(574, 239);
+            this.closedEye.Location = new System.Drawing.Point(701, 230);
             this.closedEye.Name = "closedEye";
             this.closedEye.Size = new System.Drawing.Size(35, 35);
             this.closedEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

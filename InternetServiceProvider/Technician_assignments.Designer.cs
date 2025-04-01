@@ -30,24 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.internetServiceProviderDBDataSet4 = new InternetServiceProvider.InternetServiceProviderDBDataSet4();
-            this.technicianassignmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.technician_assignmentsTableAdapter = new InternetServiceProvider.InternetServiceProviderDBDataSet4TableAdapters.technician_assignmentsTableAdapter();
             this.assignmentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ticketidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.technicianidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.assigneddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.completiondateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.technicianassignmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.internetServiceProviderDBDataSet4 = new InternetServiceProvider.InternetServiceProviderDBDataSet4();
+            this.technician_assignmentsTableAdapter = new InternetServiceProvider.InternetServiceProviderDBDataSet4TableAdapters.technician_assignmentsTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.technicianassignmentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet4)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -64,20 +66,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(800, 360);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // internetServiceProviderDBDataSet4
-            // 
-            this.internetServiceProviderDBDataSet4.DataSetName = "InternetServiceProviderDBDataSet4";
-            this.internetServiceProviderDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // technicianassignmentsBindingSource
-            // 
-            this.technicianassignmentsBindingSource.DataMember = "technician_assignments";
-            this.technicianassignmentsBindingSource.DataSource = this.internetServiceProviderDBDataSet4;
-            // 
-            // technician_assignmentsTableAdapter
-            // 
-            this.technician_assignmentsTableAdapter.ClearBeforeFill = true;
             // 
             // assignmentidDataGridViewTextBoxColumn
             // 
@@ -110,6 +98,20 @@
             this.completiondateDataGridViewTextBoxColumn.HeaderText = "completion_date";
             this.completiondateDataGridViewTextBoxColumn.Name = "completiondateDataGridViewTextBoxColumn";
             // 
+            // technicianassignmentsBindingSource
+            // 
+            this.technicianassignmentsBindingSource.DataMember = "technician_assignments";
+            this.technicianassignmentsBindingSource.DataSource = this.internetServiceProviderDBDataSet4;
+            // 
+            // internetServiceProviderDBDataSet4
+            // 
+            this.internetServiceProviderDBDataSet4.DataSetName = "InternetServiceProviderDBDataSet4";
+            this.internetServiceProviderDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // technician_assignmentsTableAdapter
+            // 
+            this.technician_assignmentsTableAdapter.ClearBeforeFill = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -131,8 +133,8 @@
             this.Text = "Technician_assignments";
             this.Load += new System.EventHandler(this.Technician_assignments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.technicianassignmentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

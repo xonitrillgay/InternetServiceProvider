@@ -70,6 +70,8 @@
             // 
             this.dataGridViewTickets.AllowUserToAddRows = false;
             this.dataGridViewTickets.AllowUserToDeleteRows = false;
+            this.dataGridViewTickets.AllowUserToResizeColumns = false;
+            this.dataGridViewTickets.AllowUserToResizeRows = false;
             this.dataGridViewTickets.AutoGenerateColumns = false;
             this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
