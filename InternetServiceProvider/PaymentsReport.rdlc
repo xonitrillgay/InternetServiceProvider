@@ -6,40 +6,41 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.81309cm</Width>
+              <Width>2.9813cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.81309cm</Width>
+              <Width>2.8175cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.83955cm</Width>
+              <Width>2.79104cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.83955cm</Width>
+              <Width>3.84938cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.83955cm</Width>
+              <Width>4.00813cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.83955cm</Width>
+              <Width>3.39958cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.26146cm</Height>
+              <Height>1.5463cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox4">
+                    <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ID техніка</Value>
+                              <Value>ID платежу</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -48,13 +49,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -65,16 +65,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox6">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Ім'я</Value>
+                              <Value>ID абонента</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -83,13 +84,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -100,16 +100,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox20">
+                    <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Прізвище</Value>
+                              <Value>Сума</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -118,13 +119,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -135,16 +135,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox22">
+                    <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Поштова скринька</Value>
+                              <Value>Дата платежу</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -153,13 +154,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -170,16 +170,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox24">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Телефон</Value>
+                              <Value>Метод оплати</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -188,13 +189,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox24</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -205,16 +205,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox26">
+                    <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Активність</Value>
+                              <Value>ID запиту абонента</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -223,13 +224,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox26</rd:DefaultName>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -241,20 +241,21 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.60542cm</Height>
+              <Height>1.12917cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="technician_id">
+                    <Textbox Name="payment_id">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!technician_id.Value</Value>
+                              <Value>=Fields!payment_id.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -263,13 +264,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>technician_id</rd:DefaultName>
+                      <rd:DefaultName>payment_id</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -280,16 +280,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="first_name">
+                    <Textbox Name="abonent_id">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!first_name.Value</Value>
+                              <Value>=Fields!abonent_id.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -298,13 +299,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>first_name</rd:DefaultName>
+                      <rd:DefaultName>abonent_id</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -315,16 +315,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="last_name">
+                    <Textbox Name="amount">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!last_name.Value</Value>
+                              <Value>=Fields!amount.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -333,13 +334,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>last_name</rd:DefaultName>
+                      <rd:DefaultName>amount</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -350,16 +350,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="email">
+                    <Textbox Name="payment_date">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!email.Value</Value>
+                              <Value>=Fields!payment_date.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -368,13 +369,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>email</rd:DefaultName>
+                      <rd:DefaultName>payment_date</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -385,16 +385,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="phone">
+                    <Textbox Name="payment_method">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!phone.Value</Value>
+                              <Value>=Fields!payment_method.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -403,13 +404,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>phone</rd:DefaultName>
+                      <rd:DefaultName>payment_method</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -420,16 +420,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="active">
+                    <Textbox Name="ticket_id">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!active.Value</Value>
+                              <Value>=Fields!ticket_id.Value</Value>
                               <Style>
                                 <FontFamily>Georgia</FontFamily>
+                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -438,13 +439,12 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>active</rd:DefaultName>
+                      <rd:DefaultName>ticket_id</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
-                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -477,22 +477,23 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSet1</DataSetName>
-        <Top>0.65828cm</Top>
-        <Left>1.17516cm</Left>
-        <Height>2.86688cm</Height>
-        <Width>16.98438cm</Width>
+        <DataSetName>PaymentHistory</DataSetName>
+        <Top>0.63182cm</Top>
+        <Left>1.0287cm</Left>
+        <Height>2.67547cm</Height>
+        <Width>19.84692cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <TextAlign>Center</TextAlign>
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.78125in</Height>
+    <Height>1.59375in</Height>
     <Style />
   </Body>
-  <Width>7.59176in</Width>
+  <Width>8.65358in</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -506,7 +507,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Технічні фахівці</Value>
+                  <Value>Звіт по платежам за надані провайдером послуги</Value>
                   <Style>
                     <FontFamily>Georgia</FontFamily>
                     <FontSize>18pt</FontSize>
@@ -519,10 +520,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox28</rd:DefaultName>
-          <Top>0.97578cm</Top>
-          <Left>6.37328cm</Left>
+          <Top>0.73188cm</Top>
+          <Left>3.65802cm</Left>
           <Height>1.07625cm</Height>
-          <Width>7.42125cm</Width>
+          <Width>15.41167cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -541,7 +542,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>3.69555cm</Height>
+      <Height>3.47514cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -566,8 +567,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox14</rd:DefaultName>
-          <Top>0.57609cm</Top>
-          <Left>13.96422cm</Left>
+          <Top>0.30276cm</Top>
+          <Left>16.80118cm</Left>
           <Height>0.81167cm</Height>
           <Width>4.83472cm</Width>
           <Style>
@@ -584,8 +585,8 @@
           <Source>Embedded</Source>
           <Value>signature</Value>
           <Sizing>Fit</Sizing>
-          <Top>1.45831cm</Top>
-          <Left>15.31999cm</Left>
+          <Top>1.18498cm</Top>
+          <Left>18.15695cm</Left>
           <Height>1.99912cm</Height>
           <Width>1.85208cm</Width>
           <ZIndex>1</ZIndex>
@@ -613,8 +614,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>0.56437cm</Top>
-          <Left>8.48082cm</Left>
+          <Top>0.29104cm</Top>
+          <Left>11.31778cm</Left>
           <Height>0.82338cm</Height>
           <Width>5.37757cm</Width>
           <ZIndex>2</ZIndex>
@@ -646,8 +647,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>2.06968cm</Top>
-          <Left>8.48082cm</Left>
+          <Top>1.79635cm</Top>
+          <Left>11.31778cm</Left>
           <Height>0.82338cm</Height>
           <Width>5.37757cm</Width>
           <ZIndex>3</ZIndex>
@@ -679,53 +680,53 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="InternetServiceProviderDBDataSet">
+    <DataSource Name="PaymentHistoryDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>94159e30-2fa8-4360-a402-488a473024c1</rd:DataSourceID>
+      <rd:DataSourceID>3ffa13e6-1303-4739-b9e5-24f6f20d9744</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="PaymentHistory">
       <Query>
-        <DataSourceName>InternetServiceProviderDBDataSet</DataSourceName>
+        <DataSourceName>PaymentHistoryDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="technician_id">
-          <DataField>technician_id</DataField>
+        <Field Name="payment_id">
+          <DataField>payment_id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="first_name">
-          <DataField>first_name</DataField>
+        <Field Name="abonent_id">
+          <DataField>abonent_id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="amount">
+          <DataField>amount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="payment_date">
+          <DataField>payment_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="payment_method">
+          <DataField>payment_method</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="last_name">
-          <DataField>last_name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="email">
-          <DataField>email</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="phone">
-          <DataField>phone</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="active">
-          <DataField>active</DataField>
-          <rd:TypeName>System.Byte</rd:TypeName>
+        <Field Name="ticket_id">
+          <DataField>ticket_id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>InternetServiceProviderDBDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Maria\Documents\Notepad\InternetServiceProvider\InternetServiceProvider\InternetServiceProviderDBDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>technicians</rd:TableName>
+        <rd:DataSetName>PaymentHistoryDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Maria\Documents\Notepad\InternetServiceProvider\InternetServiceProvider\PaymentHistoryDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>payment_history</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>techniciansTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>payment_historyTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -782,5 +783,5 @@ IU3dfRhgjDoGHh9KqhhT/wCTHqeDHQMp8nipvKab/wCe/wBjfoWHhnyVVXxKaferHhxDHQMMeGNSlpTQ
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>e65fac49-d1fa-4483-b6e9-49c2a42e2e57</rd:ReportID>
+  <rd:ReportID>6850188e-bc06-4fe6-83c1-d2c9d8576b2b</rd:ReportID>
 </Report>

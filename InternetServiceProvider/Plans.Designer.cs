@@ -47,7 +47,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.internetServiceProviderDBDataSet3 = new InternetServiceProvider.InternetServiceProviderDBDataSet3();
-            this.internetServiceProviderDBDataSet5 = new InternetServiceProvider.InternetServiceProviderDBDataSet5();
             this.internetServiceProviderDBDataSet6 = new InternetServiceProvider.InternetServiceProviderDBDataSet6();
             this.dataGridViewAbonents = new System.Windows.Forms.DataGridView();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +62,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbonents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).BeginInit();
@@ -228,11 +226,6 @@
             this.internetServiceProviderDBDataSet3.DataSetName = "InternetServiceProviderDBDataSet3";
             this.internetServiceProviderDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // internetServiceProviderDBDataSet5
-            // 
-            this.internetServiceProviderDBDataSet5.DataSetName = "InternetServiceProviderDBDataSet5";
-            this.internetServiceProviderDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // internetServiceProviderDBDataSet6
             // 
             this.internetServiceProviderDBDataSet6.DataSetName = "InternetServiceProviderDBDataSet6";
@@ -321,7 +314,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbonents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).EndInit();
@@ -344,7 +336,6 @@
         private System.Windows.Forms.Label labelMonthlyFee;
         private System.Windows.Forms.Panel panel1;
         private InternetServiceProviderDBDataSet3 internetServiceProviderDBDataSet3;
-        private InternetServiceProviderDBDataSet5 internetServiceProviderDBDataSet5;
         private InternetServiceProviderDBDataSet6 internetServiceProviderDBDataSet6;
         private System.Windows.Forms.DataGridView dataGridViewAbonents;
         private System.Windows.Forms.BindingSource abonentsBindingSource;

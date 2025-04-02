@@ -111,11 +111,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternetServiceProviderDBDataSet4.xsd</DependentUpon>
     </Compile>
-    <Compile Include="InternetServiceProviderDBDataSet5.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InternetServiceProviderDBDataSet5.xsd</DependentUpon>
-    </Compile>
     <Compile Include="InternetServiceProviderDBDataSet6.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,23 +126,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InternetServiceProviderDBDataSet8.xsd</DependentUpon>
     </Compile>
-    <Compile Include="InternetServiceProviderDBDataSet9.Designer.cs">
+    <Compile Include="md5.cs" />
+    <Compile Include="PaymentHistoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
+      <DependentUpon>PaymentHistoryDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="md5.cs" />
-    <Compile Include="Payments.cs">
+    <Compile Include="PaymentsHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Payments.Designer.cs">
-      <DependentUpon>Payments.cs</DependentUpon>
+    <Compile Include="PaymentsHistory.Designer.cs">
+      <DependentUpon>PaymentsHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaymentsReport.cs">
+    <Compile Include="PaymentsHistoryReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PaymentsReport.Designer.cs">
-      <DependentUpon>PaymentsReport.cs</DependentUpon>
+    <Compile Include="PaymentsHistoryReport.Designer.cs">
+      <DependentUpon>PaymentsHistoryReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Registration.cs">
       <SubType>Form</SubType>
@@ -218,13 +213,13 @@
     <EmbeddedResource Include="Devices.resx">
       <DependentUpon>Devices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Payments.rdlc" />
-    <EmbeddedResource Include="Payments.resx">
-      <DependentUpon>Payments.cs</DependentUpon>
+    <EmbeddedResource Include="PaymentsHistory.resx">
+      <DependentUpon>PaymentsHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PaymentsReport.resx">
-      <DependentUpon>PaymentsReport.cs</DependentUpon>
+    <EmbeddedResource Include="PaymentsHistoryReport.resx">
+      <DependentUpon>PaymentsHistoryReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PaymentsReport.rdlc" />
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,17 +314,6 @@
     <None Include="InternetServiceProviderDBDataSet4.xss">
       <DependentUpon>InternetServiceProviderDBDataSet4.xsd</DependentUpon>
     </None>
-    <None Include="InternetServiceProviderDBDataSet5.xsc">
-      <DependentUpon>InternetServiceProviderDBDataSet5.xsd</DependentUpon>
-    </None>
-    <None Include="InternetServiceProviderDBDataSet5.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InternetServiceProviderDBDataSet5.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="InternetServiceProviderDBDataSet5.xss">
-      <DependentUpon>InternetServiceProviderDBDataSet5.xsd</DependentUpon>
-    </None>
     <None Include="InternetServiceProviderDBDataSet6.xsc">
       <DependentUpon>InternetServiceProviderDBDataSet6.xsd</DependentUpon>
     </None>
@@ -363,18 +347,18 @@
     <None Include="InternetServiceProviderDBDataSet8.xss">
       <DependentUpon>InternetServiceProviderDBDataSet8.xsd</DependentUpon>
     </None>
-    <None Include="InternetServiceProviderDBDataSet9.xsc">
-      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
+    <None Include="packages.config" />
+    <None Include="PaymentHistoryDataSet.xsc">
+      <DependentUpon>PaymentHistoryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="InternetServiceProviderDBDataSet9.xsd">
+    <None Include="PaymentHistoryDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>InternetServiceProviderDBDataSet9.Designer.cs</LastGenOutput>
+      <LastGenOutput>PaymentHistoryDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="InternetServiceProviderDBDataSet9.xss">
-      <DependentUpon>InternetServiceProviderDBDataSet9.xsd</DependentUpon>
+    <None Include="PaymentHistoryDataSet.xss">
+      <DependentUpon>PaymentHistoryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

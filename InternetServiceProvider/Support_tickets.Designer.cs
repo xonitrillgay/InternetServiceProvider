@@ -143,7 +143,7 @@
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonCreate.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonCreate.Location = new System.Drawing.Point(639, 376);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(118, 32);
@@ -154,7 +154,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDelete.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDelete.Location = new System.Drawing.Point(763, 376);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(118, 32);
@@ -165,7 +165,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonUpdate.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonUpdate.Location = new System.Drawing.Point(702, 414);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(118, 32);
@@ -177,7 +177,7 @@
             // labelAbonent
             // 
             this.labelAbonent.AutoSize = true;
-            this.labelAbonent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAbonent.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAbonent.Location = new System.Drawing.Point(8, 13);
             this.labelAbonent.Name = "labelAbonent";
             this.labelAbonent.Size = new System.Drawing.Size(73, 18);
@@ -187,7 +187,7 @@
             // labelIssueDescription
             // 
             this.labelIssueDescription.AutoSize = true;
-            this.labelIssueDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelIssueDescription.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelIssueDescription.Location = new System.Drawing.Point(8, 40);
             this.labelIssueDescription.Name = "labelIssueDescription";
             this.labelIssueDescription.Size = new System.Drawing.Size(105, 18);
@@ -197,36 +197,36 @@
             // labelStatus
             // 
             this.labelStatus.AutoSize = true;
-            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStatus.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStatus.Location = new System.Drawing.Point(8, 172);
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(62, 18);
+            this.labelStatus.Size = new System.Drawing.Size(70, 18);
             this.labelStatus.TabIndex = 11;
             this.labelStatus.Text = "Статус";
             // 
             // labelCreationDate
             // 
             this.labelCreationDate.AutoSize = true;
-            this.labelCreationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCreationDate.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCreationDate.Location = new System.Drawing.Point(8, 202);
             this.labelCreationDate.Name = "labelCreationDate";
-            this.labelCreationDate.Size = new System.Drawing.Size(133, 18);
+            this.labelCreationDate.Size = new System.Drawing.Size(132, 18);
             this.labelCreationDate.TabIndex = 12;
             this.labelCreationDate.Text = "Дата створення";
             // 
             // labelClosureDate
             // 
             this.labelClosureDate.AutoSize = true;
-            this.labelClosureDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClosureDate.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelClosureDate.Location = new System.Drawing.Point(8, 259);
             this.labelClosureDate.Name = "labelClosureDate";
-            this.labelClosureDate.Size = new System.Drawing.Size(145, 18);
+            this.labelClosureDate.Size = new System.Drawing.Size(139, 18);
             this.labelClosureDate.TabIndex = 13;
             this.labelClosureDate.Text = "Дата завершення";
             // 
             // comboBoxStatus
             // 
-            this.comboBoxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxStatus.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxStatus.FormattingEnabled = true;
             this.comboBoxStatus.Location = new System.Drawing.Point(119, 164);
             this.comboBoxStatus.Name = "comboBoxStatus";
@@ -236,18 +236,18 @@
             // dateTimePickerCreationDate
             // 
             this.dateTimePickerCreationDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePickerCreationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePickerCreationDate.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePickerCreationDate.Location = new System.Drawing.Point(11, 223);
             this.dateTimePickerCreationDate.Name = "dateTimePickerCreationDate";
-            this.dateTimePickerCreationDate.Size = new System.Drawing.Size(170, 24);
+            this.dateTimePickerCreationDate.Size = new System.Drawing.Size(170, 25);
             this.dateTimePickerCreationDate.TabIndex = 15;
             // 
             // dateTimePickerClosureDate
             // 
-            this.dateTimePickerClosureDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePickerClosureDate.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePickerClosureDate.Location = new System.Drawing.Point(11, 308);
             this.dateTimePickerClosureDate.Name = "dateTimePickerClosureDate";
-            this.dateTimePickerClosureDate.Size = new System.Drawing.Size(170, 24);
+            this.dateTimePickerClosureDate.Size = new System.Drawing.Size(170, 25);
             this.dateTimePickerClosureDate.TabIndex = 16;
             // 
             // panel1
@@ -272,17 +272,17 @@
             // checkBoxClosureDate
             // 
             this.checkBoxClosureDate.AutoSize = true;
-            this.checkBoxClosureDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxClosureDate.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBoxClosureDate.Location = new System.Drawing.Point(11, 280);
             this.checkBoxClosureDate.Name = "checkBoxClosureDate";
-            this.checkBoxClosureDate.Size = new System.Drawing.Size(105, 22);
+            this.checkBoxClosureDate.Size = new System.Drawing.Size(103, 22);
             this.checkBoxClosureDate.TabIndex = 19;
             this.checkBoxClosureDate.Text = "Завершено";
             this.checkBoxClosureDate.UseVisualStyleBackColor = true;
             // 
             // comboBoxAbonent
             // 
-            this.comboBoxAbonent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxAbonent.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxAbonent.FormattingEnabled = true;
             this.comboBoxAbonent.Location = new System.Drawing.Point(119, 5);
             this.comboBoxAbonent.Name = "comboBoxAbonent";
@@ -291,7 +291,7 @@
             // 
             // textBoxIssueDescription
             // 
-            this.textBoxIssueDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxIssueDescription.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxIssueDescription.Location = new System.Drawing.Point(119, 34);
             this.textBoxIssueDescription.Multiline = true;
             this.textBoxIssueDescription.Name = "textBoxIssueDescription";
@@ -323,7 +323,7 @@
             // 
             // buttonResetSearch
             // 
-            this.buttonResetSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonResetSearch.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonResetSearch.Location = new System.Drawing.Point(870, 478);
             this.buttonResetSearch.Name = "buttonResetSearch";
             this.buttonResetSearch.Size = new System.Drawing.Size(81, 36);
@@ -335,10 +335,10 @@
             // labelSearchByDate
             // 
             this.labelSearchByDate.AutoSize = true;
-            this.labelSearchByDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSearchByDate.Location = new System.Drawing.Point(610, 459);
+            this.labelSearchByDate.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSearchByDate.Location = new System.Drawing.Point(609, 452);
             this.labelSearchByDate.Name = "labelSearchByDate";
-            this.labelSearchByDate.Size = new System.Drawing.Size(132, 20);
+            this.labelSearchByDate.Size = new System.Drawing.Size(172, 27);
             this.labelSearchByDate.TabIndex = 23;
             this.labelSearchByDate.Text = "Фільтрувати за:";
             // 

@@ -74,8 +74,8 @@ namespace InternetServiceProvider
             // Вирівнювання тексту в заголовках
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            // Вирівнювання тексту в комірках
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            // Вирівнювання тексту в комірках для всіх стовпців
+            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; // active по центру
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -389,7 +389,7 @@ namespace InternetServiceProvider
 
         private void платежіToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Payments paymentsform = new Payments();
+            PaymentsHistory paymentsform = new PaymentsHistory();
             paymentsform.Show();
         }
 

@@ -117,13 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBoxClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
   <metadata name="paymenthistoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>254, 17</value>
+    <value>196, 17</value>
   </metadata>
-  <metadata name="internetServiceProviderDBDataSet9.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="paymentHistoryDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="paymenthistoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>196, 17</value>
+  </metadata>
+  <metadata name="paymentHistoryDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="payment_historyTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>468, 17</value>
+    <value>410, 17</value>
   </metadata>
 </root>

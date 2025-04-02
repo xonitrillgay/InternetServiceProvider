@@ -20,9 +20,9 @@ namespace InternetServiceProvider {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("InternetServiceProviderDBDataSet9")]
+    [global::System.Xml.Serialization.XmlRootAttribute("PaymentHistoryDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class InternetServiceProviderDBDataSet9 : global::System.Data.DataSet {
+    public partial class PaymentHistoryDataSet : global::System.Data.DataSet {
         
         private payment_historyDataTable tablepayment_history;
         
@@ -30,7 +30,7 @@ namespace InternetServiceProvider {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public InternetServiceProviderDBDataSet9() {
+        public PaymentHistoryDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace InternetServiceProvider {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected InternetServiceProviderDBDataSet9(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected PaymentHistoryDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace InternetServiceProvider {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            InternetServiceProviderDBDataSet9 cln = ((InternetServiceProviderDBDataSet9)(base.Clone()));
+            PaymentHistoryDataSet cln = ((PaymentHistoryDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace InternetServiceProvider {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "InternetServiceProviderDBDataSet9";
+            this.DataSetName = "PaymentHistoryDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/InternetServiceProviderDBDataSet9.xsd";
+            this.Namespace = "http://tempuri.org/PaymentHistoryDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablepayment_history = new payment_historyDataTable();
@@ -225,7 +225,7 @@ namespace InternetServiceProvider {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            InternetServiceProviderDBDataSet9 ds = new InternetServiceProviderDBDataSet9();
+            PaymentHistoryDataSet ds = new PaymentHistoryDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -288,6 +288,8 @@ namespace InternetServiceProvider {
             private global::System.Data.DataColumn columnpayment_date;
             
             private global::System.Data.DataColumn columnpayment_method;
+            
+            private global::System.Data.DataColumn columnticket_id;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -364,6 +366,14 @@ namespace InternetServiceProvider {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ticket_idColumn {
+                get {
+                    return this.columnticket_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +409,15 @@ namespace InternetServiceProvider {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public payment_historyRow Addpayment_historyRow(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method) {
+            public payment_historyRow Addpayment_historyRow(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, int ticket_id) {
                 payment_historyRow rowpayment_historyRow = ((payment_historyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         abonent_id,
                         amount,
                         payment_date,
-                        payment_method};
+                        payment_method,
+                        ticket_id};
                 rowpayment_historyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpayment_historyRow);
                 return rowpayment_historyRow;
@@ -441,6 +452,7 @@ namespace InternetServiceProvider {
                 this.columnamount = base.Columns["amount"];
                 this.columnpayment_date = base.Columns["payment_date"];
                 this.columnpayment_method = base.Columns["payment_method"];
+                this.columnticket_id = base.Columns["ticket_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -456,6 +468,8 @@ namespace InternetServiceProvider {
                 base.Columns.Add(this.columnpayment_date);
                 this.columnpayment_method = new global::System.Data.DataColumn("payment_method", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpayment_method);
+                this.columnticket_id = new global::System.Data.DataColumn("ticket_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnticket_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpayment_id}, true));
                 this.columnpayment_id.AutoIncrement = true;
@@ -536,7 +550,7 @@ namespace InternetServiceProvider {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                InternetServiceProviderDBDataSet9 ds = new InternetServiceProviderDBDataSet9();
+                PaymentHistoryDataSet ds = new PaymentHistoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -663,6 +677,34 @@ namespace InternetServiceProvider {
                     this[this.tablepayment_history.payment_methodColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ticket_id {
+                get {
+                    try {
+                        return ((int)(this[this.tablepayment_history.ticket_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ticket_id\' in table \'payment_history\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepayment_history.ticket_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isticket_idNull() {
+                return this.IsNull(this.tablepayment_history.ticket_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setticket_idNull() {
+                this[this.tablepayment_history.ticket_idColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -700,7 +742,7 @@ namespace InternetServiceProvider {
         }
     }
 }
-namespace InternetServiceProvider.InternetServiceProviderDBDataSet9TableAdapters {
+namespace InternetServiceProvider.PaymentHistoryDataSetTableAdapters {
     
     
     /// <summary>
@@ -829,39 +871,46 @@ namespace InternetServiceProvider.InternetServiceProviderDBDataSet9TableAdapters
             tableMapping.ColumnMappings.Add("amount", "amount");
             tableMapping.ColumnMappings.Add("payment_date", "payment_date");
             tableMapping.ColumnMappings.Add("payment_method", "payment_method");
+            tableMapping.ColumnMappings.Add("ticket_id", "ticket_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [customer_service].[payment_history] WHERE (([payment_id] = @Original_payment_id) AND ([abonent_id] = @Original_abonent_id) AND ([amount] = @Original_amount) AND ([payment_date] = @Original_payment_date) AND ([payment_method] = @Original_payment_method))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [customer_service].[payment_history] WHERE (([payment_id] = @Original_payment_id) AND ([abonent_id] = @Original_abonent_id) AND ([amount] = @Original_amount) AND ([payment_date] = @Original_payment_date) AND ([payment_method] = @Original_payment_method) AND ((@IsNull_ticket_id = 1 AND [ticket_id] IS NULL) OR ([ticket_id] = @Original_ticket_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_abonent_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abonent_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_method", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [customer_service].[payment_history] ([abonent_id], [amount], [payment_date], [payment_method]) VALUES (@abonent_id, @amount, @payment_date, @payment_method);
-SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM customer_service.payment_history WHERE (payment_id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [customer_service].[payment_history] ([abonent_id], [amount], [payment_date], [payment_method], [ticket_id]) VALUES (@abonent_id, @amount, @payment_date, @payment_method, @ticket_id);
+SELECT payment_id, abonent_id, amount, payment_date, payment_method, ticket_id FROM customer_service.payment_history WHERE (payment_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abonent_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abonent_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [customer_service].[payment_history] SET [abonent_id] = @abonent_id, [amount] = @amount, [payment_date] = @payment_date, [payment_method] = @payment_method WHERE (([payment_id] = @Original_payment_id) AND ([abonent_id] = @Original_abonent_id) AND ([amount] = @Original_amount) AND ([payment_date] = @Original_payment_date) AND ([payment_method] = @Original_payment_method));
-SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM customer_service.payment_history WHERE (payment_id = @payment_id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [customer_service].[payment_history] SET [abonent_id] = @abonent_id, [amount] = @amount, [payment_date] = @payment_date, [payment_method] = @payment_method, [ticket_id] = @ticket_id WHERE (([payment_id] = @Original_payment_id) AND ([abonent_id] = @Original_abonent_id) AND ([amount] = @Original_amount) AND ([payment_date] = @Original_payment_date) AND ([payment_method] = @Original_payment_method) AND ((@IsNull_ticket_id = 1 AND [ticket_id] IS NULL) OR ([ticket_id] = @Original_ticket_id)));
+SELECT payment_id, abonent_id, amount, payment_date, payment_method, ticket_id FROM customer_service.payment_history WHERE (payment_id = @payment_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abonent_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abonent_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_method", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_abonent_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abonent_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_method", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_method", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticket_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticket_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "payment_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -878,8 +927,8 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM customer" +
-                "_service.payment_history";
+            this._commandCollection[0].CommandText = "SELECT payment_id, abonent_id, amount, payment_date, payment_method, ticket_id FR" +
+                "OM customer_service.payment_history";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -887,7 +936,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(InternetServiceProviderDBDataSet9.payment_historyDataTable dataTable) {
+        public virtual int Fill(PaymentHistoryDataSet.payment_historyDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -900,9 +949,9 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual InternetServiceProviderDBDataSet9.payment_historyDataTable GetData() {
+        public virtual PaymentHistoryDataSet.payment_historyDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            InternetServiceProviderDBDataSet9.payment_historyDataTable dataTable = new InternetServiceProviderDBDataSet9.payment_historyDataTable();
+            PaymentHistoryDataSet.payment_historyDataTable dataTable = new PaymentHistoryDataSet.payment_historyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -910,14 +959,14 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InternetServiceProviderDBDataSet9.payment_historyDataTable dataTable) {
+        public virtual int Update(PaymentHistoryDataSet.payment_historyDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(InternetServiceProviderDBDataSet9 dataSet) {
+        public virtual int Update(PaymentHistoryDataSet dataSet) {
             return this.Adapter.Update(dataSet, "payment_history");
         }
         
@@ -940,7 +989,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method) {
+        public virtual int Delete(int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method, global::System.Nullable<int> Original_ticket_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_payment_id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_abonent_id));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_amount));
@@ -950,6 +999,14 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_payment_method));
+            }
+            if ((Original_ticket_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_ticket_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -971,7 +1028,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method) {
+        public virtual int Insert(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, global::System.Nullable<int> ticket_id) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(abonent_id));
             this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(amount));
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(payment_date));
@@ -980,6 +1037,12 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(payment_method));
+            }
+            if ((ticket_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ticket_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1001,7 +1064,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method, int payment_id) {
+        public virtual int Update(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, global::System.Nullable<int> ticket_id, int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method, global::System.Nullable<int> Original_ticket_id, int payment_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(abonent_id));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(amount));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(payment_date));
@@ -1011,17 +1074,31 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(payment_method));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_payment_id));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_abonent_id));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Original_amount));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_payment_date));
+            if ((ticket_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ticket_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_payment_id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_abonent_id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_amount));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_payment_date));
             if ((Original_payment_method == null)) {
                 throw new global::System.ArgumentNullException("Original_payment_method");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_payment_method));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_payment_method));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(payment_id));
+            if ((Original_ticket_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_ticket_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(payment_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1042,8 +1119,8 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method) {
-            return this.Update(abonent_id, amount, payment_date, payment_method, Original_payment_id, Original_abonent_id, Original_amount, Original_payment_date, Original_payment_method, Original_payment_id);
+        public virtual int Update(int abonent_id, decimal amount, System.DateTime payment_date, string payment_method, global::System.Nullable<int> ticket_id, int Original_payment_id, int Original_abonent_id, decimal Original_amount, System.DateTime Original_payment_date, string Original_payment_method, global::System.Nullable<int> Original_ticket_id) {
+            return this.Update(abonent_id, amount, payment_date, payment_method, ticket_id, Original_payment_id, Original_abonent_id, Original_amount, Original_payment_date, Original_payment_method, Original_ticket_id, Original_payment_id);
         }
     }
     
@@ -1138,7 +1215,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(InternetServiceProviderDBDataSet9 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(PaymentHistoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._payment_historyTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.payment_history.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1157,7 +1234,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(InternetServiceProviderDBDataSet9 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(PaymentHistoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._payment_historyTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.payment_history.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1175,7 +1252,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(InternetServiceProviderDBDataSet9 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(PaymentHistoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._payment_historyTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.payment_history.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1217,7 +1294,7 @@ SELECT payment_id, abonent_id, amount, payment_date, payment_method FROM custome
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(InternetServiceProviderDBDataSet9 dataSet) {
+        public virtual int UpdateAll(PaymentHistoryDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
