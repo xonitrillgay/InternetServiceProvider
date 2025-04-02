@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Plans));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewPlans = new System.Windows.Forms.DataGridView();
             this.planidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plannameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthlyfeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +42,7 @@
             this.labelPlanName = new System.Windows.Forms.Label();
             this.labelMonthlyFee = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCreate = new System.Windows.Forms.Button();
@@ -56,41 +57,40 @@
             this.abonentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.abonentsTableAdapter = new InternetServiceProvider.InternetServiceProviderDBDataSet6TableAdapters.abonentsTableAdapter();
             this.labelAbonents = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlans)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plansBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbonents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewPlans
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPlans.AllowUserToAddRows = false;
+            this.dataGridViewPlans.AllowUserToDeleteRows = false;
+            this.dataGridViewPlans.AllowUserToResizeColumns = false;
+            this.dataGridViewPlans.AllowUserToResizeRows = false;
+            this.dataGridViewPlans.AutoGenerateColumns = false;
+            this.dataGridViewPlans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPlans.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.planidDataGridViewTextBoxColumn,
             this.plannameDataGridViewTextBoxColumn,
             this.monthlyfeeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.plansBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(304, 450);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridViewPlans.DataSource = this.plansBindingSource;
+            this.dataGridViewPlans.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridViewPlans.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewPlans.MultiSelect = false;
+            this.dataGridViewPlans.Name = "dataGridViewPlans";
+            this.dataGridViewPlans.ReadOnly = true;
+            this.dataGridViewPlans.RowHeadersVisible = false;
+            this.dataGridViewPlans.Size = new System.Drawing.Size(304, 450);
+            this.dataGridViewPlans.TabIndex = 0;
+            this.dataGridViewPlans.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPlans_CellClick);
             // 
             // planidDataGridViewTextBoxColumn
             // 
@@ -129,52 +129,71 @@
             // 
             // textBoxPlanName
             // 
-            this.textBoxPlanName.Location = new System.Drawing.Point(327, 41);
+            this.textBoxPlanName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPlanName.Location = new System.Drawing.Point(21, 60);
             this.textBoxPlanName.Name = "textBoxPlanName";
-            this.textBoxPlanName.Size = new System.Drawing.Size(180, 20);
+            this.textBoxPlanName.Size = new System.Drawing.Size(203, 29);
             this.textBoxPlanName.TabIndex = 2;
             // 
             // textBoxMonthlyFee
             // 
-            this.textBoxMonthlyFee.Location = new System.Drawing.Point(537, 41);
+            this.textBoxMonthlyFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxMonthlyFee.Location = new System.Drawing.Point(247, 60);
             this.textBoxMonthlyFee.Name = "textBoxMonthlyFee";
-            this.textBoxMonthlyFee.Size = new System.Drawing.Size(180, 20);
+            this.textBoxMonthlyFee.Size = new System.Drawing.Size(203, 29);
             this.textBoxMonthlyFee.TabIndex = 3;
             // 
             // labelPlanName
             // 
             this.labelPlanName.AutoSize = true;
-            this.labelPlanName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPlanName.Location = new System.Drawing.Point(324, 12);
+            this.labelPlanName.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPlanName.Location = new System.Drawing.Point(18, 31);
             this.labelPlanName.Name = "labelPlanName";
-            this.labelPlanName.Size = new System.Drawing.Size(175, 20);
+            this.labelPlanName.Size = new System.Drawing.Size(224, 23);
             this.labelPlanName.TabIndex = 4;
             this.labelPlanName.Text = "Назва інтернет-плану";
             // 
             // labelMonthlyFee
             // 
             this.labelMonthlyFee.AutoSize = true;
-            this.labelMonthlyFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMonthlyFee.Location = new System.Drawing.Point(534, 12);
+            this.labelMonthlyFee.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMonthlyFee.Location = new System.Drawing.Point(243, 31);
             this.labelMonthlyFee.Name = "labelMonthlyFee";
-            this.labelMonthlyFee.Size = new System.Drawing.Size(106, 20);
+            this.labelMonthlyFee.Size = new System.Drawing.Size(145, 23);
             this.labelMonthlyFee.TabIndex = 5;
             this.labelMonthlyFee.Text = "Вартість/міс.";
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.buttonUpdate);
             this.panel1.Controls.Add(this.buttonDelete);
             this.panel1.Controls.Add(this.buttonCreate);
-            this.panel1.Location = new System.Drawing.Point(327, 94);
+            this.panel1.Controls.Add(this.textBoxMonthlyFee);
+            this.panel1.Controls.Add(this.textBoxPlanName);
+            this.panel1.Controls.Add(this.labelMonthlyFee);
+            this.panel1.Controls.Add(this.labelPlanName);
+            this.panel1.Location = new System.Drawing.Point(310, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(449, 71);
+            this.panel1.Size = new System.Drawing.Size(485, 166);
             this.panel1.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(402, 98);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonUpdate.Location = new System.Drawing.Point(306, 18);
+            this.buttonUpdate.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.Location = new System.Drawing.Point(275, 115);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(121, 32);
             this.buttonUpdate.TabIndex = 2;
@@ -184,8 +203,8 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelete.Location = new System.Drawing.Point(165, 18);
+            this.buttonDelete.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.Location = new System.Drawing.Point(148, 115);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(121, 32);
             this.buttonDelete.TabIndex = 1;
@@ -195,8 +214,8 @@
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCreate.Location = new System.Drawing.Point(21, 18);
+            this.buttonCreate.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreate.Location = new System.Drawing.Point(21, 115);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(121, 32);
             this.buttonCreate.TabIndex = 0;
@@ -275,7 +294,7 @@
             // 
             // labelAbonents
             // 
-            this.labelAbonents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAbonents.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAbonents.Location = new System.Drawing.Point(346, 181);
             this.labelAbonents.Name = "labelAbonents";
             this.labelAbonents.Size = new System.Drawing.Size(413, 34);
@@ -283,52 +302,36 @@
             this.labelAbonents.Text = "Список абонентів для заданого тарифного плану";
             this.labelAbonents.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(740, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 49);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // Plans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelAbonents);
             this.Controls.Add(this.dataGridViewAbonents);
-            this.Controls.Add(this.textBoxMonthlyFee);
-            this.Controls.Add(this.labelMonthlyFee);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.labelPlanName);
-            this.Controls.Add(this.textBoxPlanName);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewPlans);
             this.Name = "Plans";
             this.Text = "Інтернет-плани";
             this.Load += new System.EventHandler(this.Plans_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlans)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plansBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet2)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbonents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewPlans;
         private InternetServiceProviderDBDataSet2 internetServiceProviderDBDataSet2;
         private System.Windows.Forms.BindingSource plansBindingSource;
         private InternetServiceProviderDBDataSet2TableAdapters.plansTableAdapter plansTableAdapter;

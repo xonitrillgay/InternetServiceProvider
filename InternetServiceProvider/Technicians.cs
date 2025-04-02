@@ -107,12 +107,6 @@ namespace InternetServiceProvider
             }
         }
 
-        private void textBox_search_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void button5_Click(object sender, EventArgs e)
         {
             RefreshDataGrid(dataGridView1);

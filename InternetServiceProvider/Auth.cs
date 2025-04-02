@@ -109,5 +109,31 @@ namespace InternetServiceProvider
             textBoxLogin.Text = "";
             textBoxPassword.Text = "";
         }
+
+        private void textBoxLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the Enter key was pressed
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Prevent the beep sound
+                e.Handled = true;
+
+                // Move focus to the password textbox
+                textBoxPassword.Focus();
+            }
+        }
+
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the Enter key was pressed
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Prevent the beep sound
+                e.Handled = true;
+
+                // Automatically click the login button
+                okButton.PerformClick();
+            }
+        }
     }
 }

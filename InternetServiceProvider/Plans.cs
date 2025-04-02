@@ -15,6 +15,7 @@ namespace InternetServiceProvider
     public partial class Plans: Form
     {
         DataBase database = new DataBase();
+        private int selectedPlanId = -1;
 
         public Plans()
         {
@@ -35,7 +36,7 @@ namespace InternetServiceProvider
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dataGridView1.DataSource = dataTable;
+                        dataGridViewPlans.DataSource = dataTable;
                     }
                 }
             }
@@ -49,76 +50,49 @@ namespace InternetServiceProvider
             }
         }
 
-        private void RefreshAbonentsDataGrid()
-        {
-            database.openConnection();
-
-            try
-            {
-                string query = "SELECT * FROM [InternetServiceProviderDB].[service].[abonents]";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                    {
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dataGridViewAbonents.DataSource = dataTable;
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка оновлення інформації про абонентів: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-        }
-
         private void BeautifyDataGridView()
         {
-            if (dataGridView1.Columns.Count == 0)
+            if (dataGridViewPlans.Columns.Count == 0)
                 return;
 
             // Колір фону таблиці
-            dataGridView1.BackgroundColor = Color.White;
+            dataGridViewPlans.BackgroundColor = Color.White;
 
             // Колір заголовків стовпців
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215); // Синій
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            dataGridView1.EnableHeadersVisualStyles = false; // Вимикаємо стандартні стилі Windows
+            dataGridViewPlans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215); // Синій
+            dataGridViewPlans.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewPlans.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dataGridViewPlans.EnableHeadersVisualStyles = false; // Вимикаємо стандартні стилі Windows
 
             // Колір рядків
-            dataGridView1.DefaultCellStyle.BackColor = Color.White;
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+            dataGridViewPlans.DefaultCellStyle.BackColor = Color.White;
+            dataGridViewPlans.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridViewPlans.DefaultCellStyle.Font = new Font("Segoe UI", 9);
 
             // Колір вибраного рядка
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 174, 219); // Блакитний
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridViewPlans.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 174, 219); // Блакитний
+            dataGridViewPlans.DefaultCellStyle.SelectionForeColor = Color.White;
 
             // Альтернативні кольори для рядків (зебрування)
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255); // Світло-блакитний
+            dataGridViewPlans.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 248, 255); // Світло-блакитний
 
             // Задаємо назви стовпців
-            dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Назва";
-            dataGridView1.Columns[2].HeaderText = "Щомісячна оплата";
+            dataGridViewPlans.Columns[0].HeaderText = "ID";
+            dataGridViewPlans.Columns[1].HeaderText = "Назва";
+            dataGridViewPlans.Columns[2].HeaderText = "Щомісячна оплата";
 
             // Center text in all cells
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridViewPlans.Columns)
             {
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // Set column resizing behavior for optimal content display
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewPlans.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             // Calculate optimal width with some padding
             int totalColumnWidth = 0;
-            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            foreach (DataGridViewColumn col in dataGridViewPlans.Columns)
             {
                 if (col.Visible)
                 {
@@ -129,14 +103,14 @@ namespace InternetServiceProvider
             }
 
             // If total width is less than the DataGridView width, adjust the last visible column
-            if (totalColumnWidth < dataGridView1.Width && dataGridView1.Columns.Cast<DataGridViewColumn>().Any(c => c.Visible))
+            if (totalColumnWidth < dataGridViewPlans.Width && dataGridViewPlans.Columns.Cast<DataGridViewColumn>().Any(c => c.Visible))
             {
-                var lastVisibleColumn = dataGridView1.Columns.Cast<DataGridViewColumn>().Last(c => c.Visible);
+                var lastVisibleColumn = dataGridViewPlans.Columns.Cast<DataGridViewColumn>().Last(c => c.Visible);
                 lastVisibleColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
             // Center align column headers
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewPlans.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void BeautifyDataGridViewAbonents()
@@ -206,7 +180,6 @@ namespace InternetServiceProvider
             dataGridViewAbonents.RowHeadersVisible = false;
         }
 
-
         private void Plans_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet6.abonents' table. You can move, or remove it, as needed.
@@ -253,430 +226,344 @@ namespace InternetServiceProvider
                 RefreshPlansDataGrid();
             }
         }
+        private bool CheckPlanDependencies(int planId)
+        {
+            bool hasDependencies = false;
+            List<string> dependentAbonents = new List<string>();
+
+            database.openConnection();
+
+            try
+            {
+                // Query to check if any abonents are using this plan
+                string query = @"SELECT a.abonent_id, a.first_name, a.last_name 
+                        FROM [InternetServiceProviderDB].[service].[abonents] a
+                        WHERE a.plan_id = @plan_id";
+
+                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                {
+                    command.Parameters.AddWithValue("@plan_id", planId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int abonentId = reader.GetInt32(0);
+                            string firstName = reader.GetString(1);
+                            string lastName = reader.GetString(2);
+
+                            dependentAbonents.Add($"{firstName} {lastName} (ID: {abonentId})");
+                            hasDependencies = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка перевірки залежностей тарифу: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                database.closeConnection();
+            }
+
+            // If dependencies exist, show a message that admin should update abonent info first
+            if (hasDependencies)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine("Цей тарифний план наразі використовується наступними абонентами:");
+                message.AppendLine();
+
+                foreach (string abonent in dependentAbonents)
+                {
+                    message.AppendLine($"• {abonent}");
+                }
+
+                message.AppendLine();
+                message.AppendLine("Ви не можете видалити цей тарифний план, доки він пов'язаний з абонентами.");
+                message.AppendLine("Спочатку оновіть інформацію про тарифи цих абонентів у формі \"Абоненти\".");
+
+                MessageBox.Show(
+                    message.ToString(),
+                    "Тарифний план використовується",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return false; // Don't allow deletion when dependencies exist
+            }
+
+            return true; // No dependencies, safe to proceed
+        }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell == null)
+            if (selectedPlanId == -1)
             {
-                MessageBox.Show("Виберіть рядок для видалення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Спочатку виберіть тарифний план для видалення!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int index = dataGridView1.CurrentCell.RowIndex;
-
-            if (dataGridView1.Rows[index].Cells[0].Value == null ||
-                string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
+            // First check for dependencies
+            if (!CheckPlanDependencies(selectedPlanId))
             {
-                MessageBox.Show("Рядок не містить ідентифікатора для видалення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return; // Don't proceed if dependencies exist
             }
 
-            int planId;
-            try
-            {
-                planId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Ідентифікатор плану має бути числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити цей тарифний план?",
+                "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Check if any abonents are using this plan
-            int abonentsCount = CountAbonentsUsingPlan(planId);
-            if (abonentsCount > 0)
+            if (result == DialogResult.Yes)
             {
-                // Ask for confirmation to reassign abonents
-                DialogResult result = MessageBox.Show(
-                    $"{abonentsCount} абоненти використовують цей тариф. Видалення тарифу призведе до автоматичного переведення абонентів на тариф з найближчою ціною. Продовжити?",
-                    "Підтвердження",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.No)
+                try
                 {
-                    return;
-                }
+                    database.openConnection();
 
-                // Find nearest price plan and reassign abonents
-                ReassignAbonentsToNearestPricePlan(planId);
-            }
+                    string query = "DELETE FROM [InternetServiceProviderDB].[service].[plans] WHERE plan_id = @plan_id";
 
-            database.openConnection();
-            try
-            {
-                string deleteQuery = "DELETE FROM [InternetServiceProviderDB].[service].[plans] WHERE plan_id = @plan_id";
-                using (SqlCommand command = new SqlCommand(deleteQuery, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@plan_id", planId);
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                     {
-                        dataGridView1.Rows.RemoveAt(index);
-                        MessageBox.Show("План успішно видалено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не вдалося видалити план з бази!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка при видаленні: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-                RefreshPlansDataGrid();
-                RefreshAbonentsDataGrid();
-            }
-        }
+                        command.Parameters.AddWithValue("@plan_id", selectedPlanId);
 
-        private int CountAbonentsUsingPlan(int planId)
-        {
-            int count = 0;
-            database.openConnection();
-
-            try
-            {
-                string query = "SELECT COUNT(*) FROM [InternetServiceProviderDB].[service].[abonents] WHERE plan_id = @plan_id";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@plan_id", planId);
-                    count = (int)command.ExecuteScalar();
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка підрахунку абонентів: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-
-            return count;
-        }
-
-        private void ReassignAbonentsToNearestPricePlan(int planIdToDelete)
-        {
-            // First, get the price and name of the plan being deleted
-            decimal currentPlanPrice = GetPlanPrice(planIdToDelete);
-            string currentPlanName = GetPlanName(planIdToDelete);
-            if (currentPlanPrice < 0)
-            {
-                MessageBox.Show("Не вдалося отримати ціну поточного плану.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Next, find the plan with the nearest price (excluding the one being deleted)
-            int nearestPlanId = FindPlanWithNearestPrice(planIdToDelete, currentPlanPrice);
-            if (nearestPlanId <= 0)
-            {
-                MessageBox.Show("Не вдалося знайти альтернативний план. Операцію скасовано.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Get information about the new plan
-            string newPlanName = GetPlanName(nearestPlanId);
-            decimal newPlanPrice = GetPlanPrice(nearestPlanId);
-
-            // Get a list of affected abonents before making changes
-            List<string> affectedAbonents = GetAbonentsUsingPlan(planIdToDelete);
-
-            // Finally, update all abonents using the plan being deleted to use the nearest plan
-            database.openConnection();
-
-            try
-            {
-                string updateQuery = @"UPDATE [InternetServiceProviderDB].[service].[abonents] 
-                            SET plan_id = @new_plan_id
-                            WHERE plan_id = @old_plan_id";
-
-                using (SqlCommand command = new SqlCommand(updateQuery, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@new_plan_id", nearestPlanId);
-                    command.Parameters.AddWithValue("@old_plan_id", planIdToDelete);
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    // Create a detailed message
-                    StringBuilder detailedMessage = new StringBuilder();
-                    detailedMessage.AppendLine($"Успішно переведено {rowsAffected} абонентів з тарифу:");
-                    detailedMessage.AppendLine($"• \"{currentPlanName}\" ({currentPlanPrice:C})");
-                    detailedMessage.AppendLine($"на тариф:");
-                    detailedMessage.AppendLine($"• \"{newPlanName}\" ({newPlanPrice:C})");
-
-                    if (affectedAbonents.Count > 0)
-                    {
-                        detailedMessage.AppendLine("\nПерелік абонентів:");
-                        foreach (string abonent in affectedAbonents)
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
                         {
-                            detailedMessage.AppendLine($"• {abonent}");
+                            MessageBox.Show("Тарифний план видалено успішно!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearFields();
                         }
-                    }
-
-                    MessageBox.Show(detailedMessage.ToString(), "Інформація про зміну тарифів", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка оновлення абонентів: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-        }
-
-        private decimal GetPlanPrice(int planId)
-        {
-            decimal price = -1;
-            database.openConnection();
-
-            try
-            {
-                string query = "SELECT monthly_fee FROM [InternetServiceProviderDB].[service].[plans] WHERE plan_id = @plan_id";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@plan_id", planId);
-                    object result = command.ExecuteScalar();
-
-                    if (result != null && result != DBNull.Value)
-                    {
-                        price = Convert.ToDecimal(result);
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка отримання ціни плану: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-
-            return price;
-        }
-
-        // Helper methods to get plan information
-        private string GetPlanName(int planId)
-        {
-            string name = string.Empty;
-            database.openConnection();
-
-            try
-            {
-                string query = "SELECT plan_name FROM [InternetServiceProviderDB].[service].[plans] WHERE plan_id = @plan_id";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@plan_id", planId);
-                    object result = command.ExecuteScalar();
-
-                    if (result != null && result != DBNull.Value)
-                    {
-                        name = result.ToString();
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка отримання назви плану: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-
-            return name;
-        }
-
-        private List<string> GetAbonentsUsingPlan(int planId)
-        {
-            List<string> abonentsList = new List<string>();
-            database.openConnection();
-
-            try
-            {
-                string query = @"SELECT first_name, last_name, phone 
-                        FROM [InternetServiceProviderDB].[service].[abonents] 
-                        WHERE plan_id = @plan_id";
-
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@plan_id", planId);
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        else
                         {
-                            string firstName = reader["first_name"].ToString();
-                            string lastName = reader["last_name"].ToString();
-                            string phone = reader["phone"].ToString();
-                            abonentsList.Add($"{firstName} {lastName} ({phone})");
+                            MessageBox.Show("Не вдалося видалити тарифний план!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка отримання списку абонентів: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-
-            return abonentsList;
-        }
-
-        private int FindPlanWithNearestPrice(int planIdToExclude, decimal targetPrice)
-        {
-            int nearestPlanId = -1;
-            decimal minPriceDifference = decimal.MaxValue;
-
-            database.openConnection();
-
-            try
-            {
-                string query = "SELECT plan_id, monthly_fee FROM [InternetServiceProviderDB].[service].[plans] WHERE plan_id != @exclude_plan_id";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                catch (Exception ex)
                 {
-                    command.Parameters.AddWithValue("@exclude_plan_id", planIdToExclude);
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (!reader.HasRows)
-                        {
-                            MessageBox.Show("Немає інших доступних планів.", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return -1;
-                        }
-
-                        while (reader.Read())
-                        {
-                            int currentPlanId = reader.GetInt32(0);
-                            decimal currentPrice = reader.GetDecimal(1);
-                            decimal priceDifference = Math.Abs(currentPrice - targetPrice);
-
-                            if (priceDifference < minPriceDifference)
-                            {
-                                minPriceDifference = priceDifference;
-                                nearestPlanId = currentPlanId;
-                            }
-                        }
-                    }
+                    MessageBox.Show($"Помилка видалення: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    database.closeConnection();
+                    RefreshPlansData();
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка пошуку найближчого плану: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-            }
-
-            return nearestPlanId;
         }
-
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell == null)
+            if (selectedPlanId == -1)
             {
-                MessageBox.Show("Виберіть рядок для оновлення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Спочатку виберіть тарифний план для оновлення!", "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int index = dataGridView1.CurrentCell.RowIndex;
-
-            if (dataGridView1.Rows[index].Cells[0].Value == null ||
-                string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
+            // Validate inputs
+            if (string.IsNullOrWhiteSpace(textBoxPlanName.Text))
             {
-                MessageBox.Show("Рядок не містить ідентифікатора для оновлення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Назва тарифного плану не може бути порожньою!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int planId;
-            try
-            {
-                planId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Ідентифікатор плану має бути числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Get the updated values from text boxes
-            string planName = textBoxPlanName.Text;
             decimal monthlyFee;
-            if (!decimal.TryParse(textBoxMonthlyFee.Text, out monthlyFee))
+            if (!decimal.TryParse(textBoxMonthlyFee.Text, out monthlyFee) || monthlyFee <= 0)
             {
-                MessageBox.Show("Щомісячна оплата має бути числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Щомісячна оплата має бути додатнім числом!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Check if any field is empty
-            if (string.IsNullOrWhiteSpace(planName))
-            {
-                MessageBox.Show("Назва плану обов'язкова для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            // For updates, we'll only check dependencies and warn the admin, but still allow the update
+            bool hasDependencies = false;
+            List<string> dependentAbonents = new List<string>();
 
             database.openConnection();
 
             try
             {
-                string query = @"UPDATE [InternetServiceProviderDB].[service].[plans] 
-                        SET plan_name = @plan_name, 
-                            monthly_fee = @monthly_fee 
-                        WHERE plan_id = @plan_id";
+                string query = @"SELECT a.abonent_id, a.first_name, a.last_name 
+                    FROM [InternetServiceProviderDB].[service].[abonents] a
+                    WHERE a.plan_id = @plan_id";
 
                 using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                 {
-                    command.Parameters.AddWithValue("@plan_id", planId);
+                    command.Parameters.AddWithValue("@plan_id", selectedPlanId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int abonentId = reader.GetInt32(0);
+                            string firstName = reader.GetString(1);
+                            string lastName = reader.GetString(2);
+
+                            dependentAbonents.Add($"{firstName} {lastName} (ID: {abonentId})");
+                            hasDependencies = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка перевірки залежностей тарифу: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // If dependencies exist, warn the admin but allow update
+            if (hasDependencies)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine("Цей тарифний план наразі використовується наступними абонентами:");
+                message.AppendLine();
+
+                foreach (string abonent in dependentAbonents)
+                {
+                    message.AppendLine($"• {abonent}");
+                }
+
+                message.AppendLine();
+                message.AppendLine("Оновлення цього тарифного плану вплине на сервіси цих абонентів.");
+                message.AppendLine("Бажаєте продовжити?");
+
+                DialogResult continueResult = MessageBox.Show(
+                    message.ToString(),
+                    "Тарифний план використовується",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (continueResult == DialogResult.No)
+                {
+                    database.closeConnection();
+                    return;
+                }
+            }
+
+            try
+            {
+                string planName = textBoxPlanName.Text.Trim();
+
+                string updateQuery = @"UPDATE [InternetServiceProviderDB].[service].[plans]
+                   SET plan_name = @plan_name,
+                       monthly_fee = @monthly_fee
+                   WHERE plan_id = @plan_id";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, database.getConnection()))
+                {
+                    command.Parameters.AddWithValue("@plan_id", selectedPlanId);
                     command.Parameters.AddWithValue("@plan_name", planName);
                     command.Parameters.AddWithValue("@monthly_fee", monthlyFee);
 
                     int rowsAffected = command.ExecuteNonQuery();
-
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("План було успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Clear input fields after successful update
-                        textBoxPlanName.Clear();
-                        textBoxMonthlyFee.Clear();
+                        MessageBox.Show("Тарифний план оновлено успішно!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearFields();
                     }
                     else
                     {
-                        MessageBox.Show("Інформацію про план не було оновлено.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Не вдалося оновити тарифний план!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Помилка оновлення плану: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Помилка оновлення: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 database.closeConnection();
-                RefreshPlansDataGrid(); // Refresh the DataGridView to reflect changes
+                RefreshPlansDataGrid(); // Using your existing method to refresh the grid
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridPlans_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                int planId = Convert.ToInt32(row.Cells[0].Value);
+                DataGridViewRow row = dataGridViewPlans.Rows[e.RowIndex];
+                selectedPlanId = Convert.ToInt32(row.Cells[0].Value); // Set the selected plan ID here
+                int planId = selectedPlanId; // Use the stored value
                 DisplayAbonentsByPlan(planId);
 
                 textBoxPlanName.Text = row.Cells[1].Value.ToString();
                 textBoxMonthlyFee.Text = row.Cells[2].Value.ToString();
+            }
+        }
+
+        private void RefreshPlansData(string nameFilter = "")
+        {
+            try
+            {
+                // Store the current position to restore it after refresh
+                int currentRow = -1;
+                if (dataGridViewPlans.CurrentRow != null)
+                {
+                    currentRow = dataGridViewPlans.CurrentRow.Index;
+                }
+
+                // Clear the current DataSource
+                dataGridViewPlans.DataSource = null;
+
+                // Use direct SQL query
+                database.openConnection();
+
+                string query;
+                SqlCommand command;
+
+                // If a name filter is provided, use a WHERE clause to filter
+                if (!string.IsNullOrWhiteSpace(nameFilter))
+                {
+                    query = @"SELECT plan_id, plan_name, monthly_fee
+                    FROM [InternetServiceProviderDB].[service].[plans]
+                    WHERE plan_name LIKE @nameFilter";
+
+                    command = new SqlCommand(query, database.getConnection());
+                    command.Parameters.AddWithValue("@nameFilter", "%" + nameFilter + "%");
+                }
+                else
+                {
+                    // No filter, get all plans
+                    query = "SELECT plan_id, plan_name, monthly_fee FROM [InternetServiceProviderDB].[service].[plans]";
+                    command = new SqlCommand(query, database.getConnection());
+                }
+
+                // Create a DataTable to hold the results
+                DataTable dataTable = new DataTable();
+
+                // Use SqlDataAdapter to fill the DataTable
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(dataTable);
+
+                    // Set the DataTable as the DataSource for the DataGridView
+                    dataGridViewPlans.DataSource = dataTable;
+                }
+
+                // Apply formatting
+                BeautifyDataGridView();
+
+                // Try to restore the previous selected row if possible
+                if (currentRow >= 0 && currentRow < dataGridViewPlans.Rows.Count)
+                {
+                    dataGridViewPlans.CurrentCell = dataGridViewPlans.Rows[currentRow].Cells[0];
+                    dataGridViewPlans.Rows[currentRow].Selected = true;
+                }
+
+                // Force the DataGridView to refresh its display
+                dataGridViewPlans.Refresh();
+
+                // Display message if no records found
+                if (dataTable.Rows.Count == 0 && !string.IsNullOrWhiteSpace(nameFilter))
+                {
+                    MessageBox.Show($"За запитом \"{nameFilter}\" тарифних планів не знайдено.",
+                        "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка оновлення даних: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                database.closeConnection();
             }
         }
 

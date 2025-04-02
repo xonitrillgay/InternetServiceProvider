@@ -81,6 +81,177 @@ namespace InternetServiceProvider
             });
             comboBoxDeviceType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+        private bool CheckDeviceDependencies(int deviceId)
+        {
+            bool hasDependencies = false;
+            List<string> dependentAbonents = new List<string>();
+
+            database.openConnection();
+
+            try
+            {
+                // Query to check if any abonents are using this device
+                string query = @"SELECT a.abonent_id, a.first_name, a.last_name 
+                        FROM [InternetServiceProviderDB].[service].[abonents] a
+                        WHERE a.device_id = @device_id";
+
+                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                {
+                    command.Parameters.AddWithValue("@device_id", deviceId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int abonentId = reader.GetInt32(0);
+                            string firstName = reader.GetString(1);
+                            string lastName = reader.GetString(2);
+
+                            dependentAbonents.Add($"{firstName} {lastName} (ID: {abonentId})");
+                            hasDependencies = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка перевірки залежностей пристрою: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                database.closeConnection();
+            }
+
+            // If dependencies exist, show a message that admin should update abonent info first
+            if (hasDependencies)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine("Цей пристрій наразі використовується наступними абонентами:");
+                message.AppendLine();
+
+                foreach (string abonent in dependentAbonents)
+                {
+                    message.AppendLine($"• {abonent}");
+                }
+
+                message.AppendLine();
+                message.AppendLine("Ви не можете видалити цей пристрій, доки він пов'язаний з абонентами.");
+                message.AppendLine("Спочатку оновіть інформацію про пристрої цих абонентів у формі \"Абоненти\".");
+
+                MessageBox.Show(
+                    message.ToString(),
+                    "Пристрій використовується",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return false; // Don't allow deletion when dependencies exist
+            }
+
+            return true; // No dependencies, safe to proceed
+        }
+
+        private class DeviceSuggestion
+        {
+            public int DeviceId { get; set; }
+            public string DeviceName { get; set; }
+            public string DeviceType { get; set; }
+
+            public override string ToString()
+            {
+                return $"{DeviceName} (Тип: {DeviceType})";
+            }
+        }
+
+        private class SelectReplacementDeviceForm : Form
+        {
+            public int SelectedDeviceId { get; private set; } = -1;
+            private ComboBox comboBoxDevices;
+            private Button buttonOK;
+            private Button buttonCancel;
+            private List<DeviceSuggestion> _suggestions;
+
+            public SelectReplacementDeviceForm(List<DeviceSuggestion> suggestions)
+            {
+                _suggestions = suggestions;
+                InitializeComponents();
+                PopulateDeviceComboBox();
+            }
+
+            private void InitializeComponents()
+            {
+                this.Text = "Вибір заміни пристрою";
+                this.Size = new Size(400, 150);
+                this.StartPosition = FormStartPosition.CenterParent;
+                this.FormBorderStyle = FormBorderStyle.FixedDialog;
+                this.MaximizeBox = false;
+                this.MinimizeBox = false;
+
+                // Create Label
+                Label label = new Label
+                {
+                    Text = "Виберіть новий пристрій для абонентів:",
+                    Location = new Point(20, 20),
+                    Size = new Size(360, 20)
+                };
+
+                // Create ComboBox
+                comboBoxDevices = new ComboBox
+                {
+                    DropDownStyle = ComboBoxStyle.DropDownList,
+                    Location = new Point(20, 45),
+                    Size = new Size(340, 25)
+                };
+
+                // Create Buttons
+                buttonOK = new Button
+                {
+                    Text = "OK",
+                    DialogResult = DialogResult.OK,
+                    Location = new Point(180, 80),
+                    Size = new Size(80, 25)
+                };
+
+                buttonCancel = new Button
+                {
+                    Text = "Відміна",
+                    DialogResult = DialogResult.Cancel,
+                    Location = new Point(280, 80),
+                    Size = new Size(80, 25)
+                };
+
+                // Add event handlers
+                buttonOK.Click += ButtonOK_Click;
+
+                // Add controls to form
+                this.Controls.Add(label);
+                this.Controls.Add(comboBoxDevices);
+                this.Controls.Add(buttonOK);
+                this.Controls.Add(buttonCancel);
+
+                this.AcceptButton = buttonOK;
+                this.CancelButton = buttonCancel;
+            }
+
+            private void PopulateDeviceComboBox()
+            {
+                foreach (var suggestion in _suggestions)
+                {
+                    comboBoxDevices.Items.Add(suggestion);
+                }
+
+                if (comboBoxDevices.Items.Count > 0)
+                    comboBoxDevices.SelectedIndex = 0;
+            }
+
+            private void ButtonOK_Click(object sender, EventArgs e)
+            {
+                if (comboBoxDevices.SelectedItem is DeviceSuggestion suggestion)
+                {
+                    SelectedDeviceId = suggestion.DeviceId;
+                }
+            }
+        }
 
         private void ClearFields()
         {
@@ -232,6 +403,12 @@ namespace InternetServiceProvider
                 return;
             }
 
+            // First check for dependencies
+            if (!CheckDeviceDependencies(selectedDeviceId))
+            {
+                return; // User chose not to proceed or dependencies exist
+            }
+
             DialogResult result = MessageBox.Show("Ви впевнені, що хочете видалити цей пристрій?",
                 "Підтвердження видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -285,19 +462,82 @@ namespace InternetServiceProvider
                 return;
             }
 
+            // For updates, we'll only check dependencies and warn the admin, but still allow the update
+            bool hasDependencies = false;
+            List<string> dependentAbonents = new List<string>();
+
+            database.openConnection();
+
+            try
+            {
+                string query = @"SELECT a.abonent_id, a.first_name, a.last_name 
+                        FROM [InternetServiceProviderDB].[service].[abonents] a
+                        WHERE a.device_id = @device_id";
+
+                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                {
+                    command.Parameters.AddWithValue("@device_id", selectedDeviceId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int abonentId = reader.GetInt32(0);
+                            string firstName = reader.GetString(1);
+                            string lastName = reader.GetString(2);
+
+                            dependentAbonents.Add($"{firstName} {lastName} (ID: {abonentId})");
+                            hasDependencies = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка перевірки залежностей пристрою: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // If dependencies exist, warn the admin but allow update
+            if (hasDependencies)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine("Цей пристрій наразі використовується наступними абонентами:");
+                message.AppendLine();
+
+                foreach (string abonent in dependentAbonents)
+                {
+                    message.AppendLine($"• {abonent}");
+                }
+
+                message.AppendLine();
+                message.AppendLine("Оновлення цього пристрою вплине на сервіси цих абонентів.");
+                message.AppendLine("Бажаєте продовжити?");
+
+                DialogResult continueResult = MessageBox.Show(
+                    message.ToString(),
+                    "Пристрій використовується",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (continueResult == DialogResult.No)
+                {
+                    database.closeConnection();
+                    return;
+                }
+            }
+
             try
             {
                 string deviceName = textBoxDeviceName.Text.Trim();
                 string deviceType = comboBoxDeviceType.SelectedItem.ToString();
 
-                database.openConnection();
+                string updateQuery = @"UPDATE [InternetServiceProviderDB].[service].[devices]
+                       SET device_name = @device_name,
+                           device_type = @device_type
+                       WHERE device_id = @device_id";
 
-                string query = @"UPDATE [InternetServiceProviderDB].[service].[devices]
-                               SET device_name = @device_name,
-                                   device_type = @device_type
-                               WHERE device_id = @device_id";
-
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                using (SqlCommand command = new SqlCommand(updateQuery, database.getConnection()))
                 {
                     command.Parameters.AddWithValue("@device_id", selectedDeviceId);
                     command.Parameters.AddWithValue("@device_name", deviceName);

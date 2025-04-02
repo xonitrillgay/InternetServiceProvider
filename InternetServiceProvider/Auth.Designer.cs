@@ -56,7 +56,7 @@
             this.panel1.Controls.Add(this.clearPictureBox);
             this.panel1.Location = new System.Drawing.Point(341, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(428, 71);
+            this.panel1.Size = new System.Drawing.Size(447, 71);
             this.panel1.TabIndex = 0;
             // 
             // authorization
@@ -107,6 +107,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(210, 29);
             this.textBoxLogin.TabIndex = 6;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
             // 
             // textBoxPassword
             // 
@@ -115,6 +116,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(210, 29);
             this.textBoxPassword.TabIndex = 7;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
             // 
             // okButton
             // 

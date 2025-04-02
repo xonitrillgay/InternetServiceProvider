@@ -123,15 +123,6 @@
   <metadata name="abonentsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>254, 17</value>
   </metadata>
-  <metadata name="abonent_id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="abonentsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>254, 17</value>
-  </metadata>
-  <metadata name="internetServiceProviderDBDataSet6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="internetServiceProviderDBDataSet6.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -142,7 +133,7 @@
   <data name="pictureBoxCreate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAZACAYAAAAhDI6nAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAArPRJREFUeF7s3S9XXEvX8Gu+VFQcEolEotBINA6Jw+KwOCQSh8ZhkfHveOd82NwJ
+        vwAADr8BOAVTJAAArPRJREFUeF7s3S9XXEvX8Gu+VFQcEolEotBINA6Jw+KwOCQSh8ZhkfHveOd82NwJ
         yQS6m/6zVs3rGuM3jjjnPPfe2emurqq1qvYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgL5+RPvRYXQcnURn
         0UV0FV1Ht9Hdfz3+19N/vUS//uv/rdjb//9vPUf5fzv/d/J/M//3b6L858l/rvMo/xnznzX/mfOf/WcE
@@ -1724,7 +1715,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1AAADdQB75G6FQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAJJtSURBVHhe7d0H
+        0wAADdMBvdUcagAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAJJtSURBVHhe7d0H
         dB1H2Tdw1HuxLFmyZclF7kWyLFtykWzLltx7t1MdJyH03lvoLYRAICGEJMBLS4CEkEoNECChQ0Ln5aP3
         Xt9Qwn7/52YVNjd/ydt3du/znPM7J2diSTPPzO7s3bs78wjLspRSBQAxF14NX4a/wC/hC/BUaGU/o5TK
         LlqolMoORDG8AO4DKWB+D/vYzyulsokWKqWyA/Eme5J340L2O5RS2UMLlVLZgHiMY3J362XsdymlsoUW

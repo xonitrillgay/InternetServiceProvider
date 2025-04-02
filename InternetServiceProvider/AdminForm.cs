@@ -29,8 +29,23 @@ namespace InternetServiceProvider
             this.registerTableAdapter.Fill(this.internetServiceProviderDBDataSet10.register);
             BeautifyDataGridView();
             RefreshUserDataGrid();
-            
-            comboBoxRole.Items.AddRange(new string[] { "admin", "user" });
+
+            SetupRoleComboBoxes();
+        }
+        private void SetupRoleComboBoxes()
+        {
+            // Define valid roles
+            string[] validRoles = new string[] { "admin", "user" };
+
+            // Configure the main role ComboBox
+            comboBoxRole.Items.Clear();
+            comboBoxRole.Items.AddRange(validRoles);
+            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList; // Prevent manual text entry
+
+            // Configure the second role ComboBox (for updating roles)
+            comboBoxNewRole.Items.Clear();
+            comboBoxNewRole.Items.AddRange(validRoles);
+            comboBoxNewRole.DropDownStyle = ComboBoxStyle.DropDownList; // Prevent manual text entry
         }
 
         private void RefreshUserDataGrid()
@@ -116,8 +131,23 @@ namespace InternetServiceProvider
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            string username = textBoxUsername.Text;
+            string username = textBoxUsername.Text.Trim();
             string password = textBoxPassword.Text;
+
+            // Validate input fields
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Username and password cannot be empty!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validate role selection
+            if (comboBoxRole.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid role (admin or user)!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string role = comboBoxRole.SelectedItem.ToString();
 
             // Hash the password using MD5
@@ -135,6 +165,11 @@ namespace InternetServiceProvider
                     command.Parameters.AddWithValue("@role", role);
                     command.ExecuteNonQuery();
                     MessageBox.Show("User added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Clear input fields after successful addition
+                    textBoxUsername.Clear();
+                    textBoxPassword.Clear();
+                    comboBoxRole.SelectedIndex = -1;
                 }
             }
             catch (SqlException ex)
@@ -190,6 +225,13 @@ namespace InternetServiceProvider
                 return;
             }
 
+            // Validate role selection
+            if (comboBoxNewRole.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a valid role (admin or user)!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int selectedRowIndex = UsersdataGridView.CurrentCell.RowIndex;
             int userId = Convert.ToInt32(UsersdataGridView.Rows[selectedRowIndex].Cells[0].Value);
             string newRole = comboBoxNewRole.SelectedItem.ToString();
@@ -228,8 +270,41 @@ namespace InternetServiceProvider
 
                 textBoxUsername.Text = row.Cells[1].Value.ToString();
                 textBoxPassword.Text = row.Cells[2].Value.ToString();
-                comboBoxRole.Text = row.Cells[3].Value.ToString();
+
+                // Set the role in comboBoxRole by finding the matching item
+                string currentRole = row.Cells[3].Value.ToString();
+                int roleIndex = comboBoxRole.Items.IndexOf(currentRole);
+                if (roleIndex >= 0)
+                {
+                    comboBoxRole.SelectedIndex = roleIndex;
+                }
+                else
+                {
+                    comboBoxRole.SelectedIndex = -1;
+                    MessageBox.Show($"The role '{currentRole}' is not a standard role. Please select either 'admin' or 'user'.",
+                                   "Non-standard Role", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                // Also set the role in the update role combobox
+                int newRoleIndex = comboBoxNewRole.Items.IndexOf(currentRole);
+                if (newRoleIndex >= 0)
+                {
+                    comboBoxNewRole.SelectedIndex = newRoleIndex;
+                }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void ClearFields()
+        {
+            textBoxUsername.Clear();
+            textBoxPassword.Clear();
+            comboBoxRole.SelectedIndex = -1;
+            comboBoxNewRole.SelectedIndex = -1;
         }
     }
 }
