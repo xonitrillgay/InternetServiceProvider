@@ -64,6 +64,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.авторизаціяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вийтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сервісToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запитиАбонентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -411,18 +412,26 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.авторизаціяToolStripMenuItem,
             this.вийтиToolStripMenuItem});
             this.файлToolStripMenuItem.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(59, 22);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // авторизаціяToolStripMenuItem
+            // 
+            this.авторизаціяToolStripMenuItem.Name = "авторизаціяToolStripMenuItem";
+            this.авторизаціяToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
+            this.авторизаціяToolStripMenuItem.Text = "Вийти з облікового запису";
+            this.авторизаціяToolStripMenuItem.Click += new System.EventHandler(this.авторизаціяToolStripMenuItem_Click);
+            // 
             // вийтиToolStripMenuItem
             // 
             this.вийтиToolStripMenuItem.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.вийтиToolStripMenuItem.Name = "вийтиToolStripMenuItem";
-            this.вийтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.вийтиToolStripMenuItem.Text = "Вийти";
+            this.вийтиToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
+            this.вийтиToolStripMenuItem.Text = "Вихід з програми";
             this.вийтиToolStripMenuItem.Click += new System.EventHandler(this.вийтиToolStripMenuItem_Click);
             // 
             // сервісToolStripMenuItem
@@ -570,6 +579,7 @@
         private System.Windows.Forms.ToolStripMenuItem вийтиToolStripMenuItem;
         private System.Windows.Forms.Button report;
         private System.Windows.Forms.ToolStripMenuItem адмінпанельToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem авторизаціяToolStripMenuItem;
     }
 }
 

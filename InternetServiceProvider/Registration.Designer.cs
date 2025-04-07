@@ -187,7 +187,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Registration";
-            this.Text = "Registration";
+            this.Text = "Реєстрація";
             this.Load += new System.EventHandler(this.Registration_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

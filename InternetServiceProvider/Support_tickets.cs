@@ -16,14 +16,19 @@ namespace InternetServiceProvider
     {
         private DataBase database = new DataBase();
         private int selectedTicketId = -1;
+        private string userRole = "user"; // Default role
 
-        public Support_tickets()
+        public Support_tickets(string role = "user")
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userRole = role.Trim();
             SetupStatusComboBox();
             LoadAbonentIds();
             SetupSearchControls();
+        }
+        public Support_tickets() : this("user")
+        {
         }
 
         private void SetupStatusComboBox()
@@ -158,6 +163,10 @@ namespace InternetServiceProvider
             checkBoxClosureDate.CheckedChanged += checkBoxClosureDate_CheckedChanged;
             comboBoxStatus.SelectedIndexChanged += ComboBoxStatus_SelectedIndexChanged;
             dataGridViewTickets.CellClick += DataGridViewTickets_CellClick;
+
+            bool isAdmin = (userRole.ToLower() == "admin");
+            buttonDelete.Visible = isAdmin;
+            buttonUpdate.Visible = isAdmin;
 
             BeautifyDataGridView();
 

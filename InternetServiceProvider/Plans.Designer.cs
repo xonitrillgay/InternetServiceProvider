@@ -127,7 +127,7 @@
             // 
             // textBoxPlanName
             // 
-            this.textBoxPlanName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPlanName.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPlanName.Location = new System.Drawing.Point(21, 60);
             this.textBoxPlanName.Name = "textBoxPlanName";
             this.textBoxPlanName.Size = new System.Drawing.Size(203, 29);
@@ -135,7 +135,7 @@
             // 
             // textBoxMonthlyFee
             // 
-            this.textBoxMonthlyFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxMonthlyFee.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxMonthlyFee.Location = new System.Drawing.Point(247, 60);
             this.textBoxMonthlyFee.Name = "textBoxMonthlyFee";
             this.textBoxMonthlyFee.Size = new System.Drawing.Size(203, 29);

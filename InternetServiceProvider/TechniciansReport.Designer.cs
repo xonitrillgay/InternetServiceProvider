@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.internetServiceProviderDBDataSet8 = new InternetServiceProvider.InternetServiceProviderDBDataSet8();
             this.techniciansBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.internetServiceProviderDBDataSet8 = new InternetServiceProvider.InternetServiceProviderDBDataSet8();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.techniciansTableAdapter = new InternetServiceProvider.InternetServiceProviderDBDataSet8TableAdapters.techniciansTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.techniciansBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet8)).BeginInit();
             this.SuspendLayout();
+            // 
+            // techniciansBindingSource
+            // 
+            this.techniciansBindingSource.DataMember = "technicians";
+            this.techniciansBindingSource.DataSource = this.internetServiceProviderDBDataSet8;
+            // 
+            // internetServiceProviderDBDataSet8
+            // 
+            this.internetServiceProviderDBDataSet8.DataSetName = "InternetServiceProviderDBDataSet8";
+            this.internetServiceProviderDBDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +61,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // internetServiceProviderDBDataSet8
-            // 
-            this.internetServiceProviderDBDataSet8.DataSetName = "InternetServiceProviderDBDataSet8";
-            this.internetServiceProviderDBDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // techniciansBindingSource
-            // 
-            this.techniciansBindingSource.DataMember = "technicians";
-            this.techniciansBindingSource.DataSource = this.internetServiceProviderDBDataSet8;
-            // 
             // techniciansTableAdapter
             // 
             this.techniciansTableAdapter.ClearBeforeFill = true;
@@ -72,10 +72,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "TechniciansReport";
-            this.Text = "TechniciansReport";
+            this.Text = "Звіт по тех-працівникам";
             this.Load += new System.EventHandler(this.TechniciansReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.techniciansBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet8)).EndInit();
             this.ResumeLayout(false);
 
         }

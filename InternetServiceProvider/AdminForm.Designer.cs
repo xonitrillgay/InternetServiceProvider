@@ -49,16 +49,16 @@
             this.password = new System.Windows.Forms.Label();
             this.roles = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.UsersdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet10)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // UsersdataGridView
@@ -239,29 +239,10 @@
             this.panel1.Controls.Add(this.textBoxPassword);
             this.panel1.Controls.Add(this.textBoxUsername);
             this.panel1.Controls.Add(this.buttonAddUser);
-            this.panel1.Location = new System.Drawing.Point(427, 34);
+            this.panel1.Location = new System.Drawing.Point(424, 22);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(364, 188);
             this.panel1.TabIndex = 11;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.comboBoxNewRole);
-            this.panel2.Controls.Add(this.buttonUpdateRole);
-            this.panel2.Location = new System.Drawing.Point(427, 248);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(364, 101);
-            this.panel2.TabIndex = 12;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.buttonDeleteUser);
-            this.panel3.Location = new System.Drawing.Point(427, 361);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(364, 74);
-            this.panel3.TabIndex = 13;
             // 
             // pictureBox1
             // 
@@ -274,6 +255,25 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.comboBoxNewRole);
+            this.panel2.Controls.Add(this.buttonUpdateRole);
+            this.panel2.Location = new System.Drawing.Point(424, 236);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(364, 101);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.buttonDeleteUser);
+            this.panel3.Location = new System.Drawing.Point(424, 349);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(364, 74);
+            this.panel3.TabIndex = 13;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,16 +284,16 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.UsersdataGridView);
             this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.Text = "Адмін-панель";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UsersdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.internetServiceProviderDBDataSet10)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

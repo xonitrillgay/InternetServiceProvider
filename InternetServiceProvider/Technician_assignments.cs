@@ -16,11 +16,16 @@ namespace InternetServiceProvider
     {
         private DataBase database = new DataBase();
         private int selectedAssignmentId = -1;
+        private string userRole = "user"; // Default role
 
-        public Technician_assignments()
+        public Technician_assignments(string role = "user")
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userRole = role.Trim();
+        }
+        public Technician_assignments() : this("user")
+        {
         }
 
         private void BeautifyDataGridView()
@@ -78,6 +83,9 @@ namespace InternetServiceProvider
 
             // Register event handler for cell click
             dataGridViewAssignments.CellClick += DataGridViewAssignments_CellClick;
+
+            bool isAdmin = (userRole.ToLower() == "admin");
+            buttonUpdate.Visible = isAdmin;
 
             BeautifyDataGridView();
             ClearFields();

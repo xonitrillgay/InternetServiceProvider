@@ -120,6 +120,12 @@
   <metadata name="techniciansBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 17</value>
   </metadata>
+  <metadata name="techniciansBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>248, 17</value>
+  </metadata>
+  <metadata name="internetServiceProviderDBDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="internetServiceProviderDBDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -130,7 +136,7 @@
   <data name="report.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0gAADdIBb5L+jgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACK2SURBVHhe7d1t
+        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACK2SURBVHhe7d1t
         rKbrWdZxaXcAKQU+2K1oxAgKYoqgUQOWRCABrZgYEgExUcSClaiAqIiKgQ9GwE8CUcAGNUIiidaGQHxJ
         iEGCCBIaRBAChthW1NBAo7zTQj0us+p1d3rua2bNfa95nvO5f0fy+3Iye63Z+3pm9r+7L/yqt7/97TyF
         7IPj1fGaeH38Uoz/A/B0fiV+OL4hPjd+Z/VrDzhGeeSFZc/FF8dbY/ubF3C8r4mXVr8WgX3KI7Xs5fG9

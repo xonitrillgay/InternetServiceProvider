@@ -16,11 +16,16 @@ namespace InternetServiceProvider
     {
         DataBase database = new DataBase();
         private int selectedPlanId = -1;
+        private string userRole = "user"; // Default role
 
-        public Plans()
+        public Plans(string role = "user")
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userRole = role.Trim();
+        }
+        public Plans() : this("user")
+        {
         }
 
         private void RefreshPlansDataGrid()
@@ -188,6 +193,10 @@ namespace InternetServiceProvider
             this.abonentsTableAdapter.Fill(this.internetServiceProviderDBDataSet6.abonents);
             // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet2.plans' table. You can move, or remove it, as needed.
             this.plansTableAdapter.Fill(this.internetServiceProviderDBDataSet2.plans);
+
+            bool isAdmin = (userRole.ToLower() == "admin");
+            buttonDelete.Visible = isAdmin;
+            buttonUpdate.Visible = isAdmin;
 
             BeautifyDataGridView();
             BeautifyDataGridViewAbonents();

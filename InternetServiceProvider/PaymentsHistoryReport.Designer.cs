@@ -72,7 +72,7 @@
             this.ClientSize = new System.Drawing.Size(898, 476);
             this.Controls.Add(this.reportViewer1);
             this.Name = "PaymentsHistoryReport";
-            this.Text = "PaymentsHistoryReport";
+            this.Text = "Звіт по платежам";
             this.Load += new System.EventHandler(this.PaymentsHistoryReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.paymenthistoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentHistoryDataSet)).EndInit();

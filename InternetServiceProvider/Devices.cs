@@ -15,12 +15,17 @@ namespace InternetServiceProvider
     {
         private DataBase database = new DataBase();
         private int selectedDeviceId = -1;
+        private string userRole = "user"; // Default role
 
-        public Devices()
+        public Devices(string role = "user")
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userRole = role.Trim();
             SetupDeviceTypeComboBox();
+        }
+        public Devices() : this("user")
+        {
         }
 
         private void BeautifyDataGridView()
@@ -61,6 +66,11 @@ namespace InternetServiceProvider
         {
             // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet1.devices' table. You can move, or remove it, as needed.
             this.devicesTableAdapter.Fill(this.internetServiceProviderDBDataSet1.devices);
+
+            // Set visibility of admin-only controls
+            bool isAdmin = (userRole.ToLower() == "admin");
+            buttonDelete.Visible = isAdmin;
+            buttonUpdate.Visible = isAdmin;
 
             ClearFields();
             BeautifyDataGridView();

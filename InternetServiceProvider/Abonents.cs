@@ -15,6 +15,7 @@ namespace InternetServiceProvider
     {
         DataBase database = new DataBase();
         private int selectedRow;
+        private string userRole = "user";
 
         public class ComboBoxItem
         {
@@ -26,12 +27,15 @@ namespace InternetServiceProvider
                 return Text;
             }
         }
+        public Abonents() : this("user")
+        {
+        }
 
-
-        public Abonents()
+        public Abonents(string role)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            this.userRole = role.Trim();
         }
 
         private void BeautifyDataGridView()
@@ -96,10 +100,20 @@ namespace InternetServiceProvider
         {
             // TODO: This line of code loads data into the 'internetServiceProviderDBDataSet6.abonents' table. You can move, or remove it, as needed.
             this.abonentsTableAdapter.Fill(this.internetServiceProviderDBDataSet6.abonents);
+
+            // Make sure the role comparison is done properly
+            pictureBoxDelete.Visible = (userRole.Trim().ToLower() == "admin");
+            pictureBox1.Visible = (userRole.Trim().ToLower() == "admin");
+            labelDelete.Visible = (userRole.Trim().ToLower() == "admin");
+            labelUpdate.Visible = (userRole.Trim().ToLower() == "admin");
+
             FillComboBoxPlanID();
             FillComboBoxDeviceID();
             RefreshAbonentsDataGrid();
             BeautifyDataGridView();
+
+            // Set focus to the create fields to indicate they're usable
+            textBoxName.Focus();
         }
 
         private void RefreshAbonentsDataGrid()
@@ -211,178 +225,248 @@ namespace InternetServiceProvider
 
         private void pictureBoxCreate_Click(object sender, EventArgs e)
         {
-            string first_name = textBoxName.Text;
-            string last_name = textBoxLastName.Text;
-            string abonent_phone = textBoxTelephone.Text;
-            string abonent_email = textBoxEmail.Text;
-            string abonent_address = textBoxAddress.Text;
-
-            string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
-            string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
-
-            if (string.IsNullOrWhiteSpace(first_name) ||
-                string.IsNullOrWhiteSpace(last_name) ||
-                string.IsNullOrWhiteSpace(abonent_phone) ||
-                string.IsNullOrWhiteSpace(abonent_email) ||
-                string.IsNullOrWhiteSpace(abonent_address) ||
-                string.IsNullOrWhiteSpace(plan_id) ||
-                string.IsNullOrWhiteSpace(device_id))
-            {
-                MessageBox.Show("Всі поля обов'язкові для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            database.openConnection();
-
+            string abonentName = "";
             try
             {
-                string query = "INSERT INTO [InternetServiceProviderDB].[service].[abonents] (first_name, last_name, phone, email, address, plan_id, device_id) VALUES (@first_name, @last_name, @abonent_phone, @abonent_email, @abonent_address, @plan_id, @device_id)";
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string firstName = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                string lastName = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                abonentName = $"{firstName} {lastName}";
+            }
+            catch { /* Якщо не вдалося отримати ім'я, просто показуємо загальне повідомлення */ }
+
+            string confirmMessage = string.IsNullOrEmpty(abonentName)
+                ? "Ви впевнені, що хочете створити нового абонента?"
+                : $"Ви впевнені, що хочете створити нового абонента {abonentName}?";
+
+            DialogResult result = MessageBox.Show(
+                confirmMessage,
+                "Підтвердження створення",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                string first_name = textBoxName.Text;
+                string last_name = textBoxLastName.Text;
+                string abonent_phone = textBoxTelephone.Text;
+                string abonent_email = textBoxEmail.Text;
+                string abonent_address = textBoxAddress.Text;
+
+                string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
+                string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
+
+                if (string.IsNullOrWhiteSpace(first_name) ||
+                    string.IsNullOrWhiteSpace(last_name) ||
+                    string.IsNullOrWhiteSpace(abonent_phone) ||
+                    string.IsNullOrWhiteSpace(abonent_email) ||
+                    string.IsNullOrWhiteSpace(abonent_address) ||
+                    string.IsNullOrWhiteSpace(plan_id) ||
+                    string.IsNullOrWhiteSpace(device_id))
                 {
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@abonent_phone", abonent_phone);
-                    command.Parameters.AddWithValue("@abonent_email", abonent_email);
-                    command.Parameters.AddWithValue("@abonent_address", abonent_address);
-                    command.Parameters.AddWithValue("@plan_id", plan_id);
-                    command.Parameters.AddWithValue("@device_id", device_id);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Абонента додано успішно!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Всі поля обов'язкові для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка додавання абонента: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-                RefreshAbonentsDataGrid();
+
+                database.openConnection();
+
+                try
+                {
+                    string query = "INSERT INTO [InternetServiceProviderDB].[service].[abonents] (first_name, last_name, phone, email, address, plan_id, device_id) VALUES (@first_name, @last_name, @abonent_phone, @abonent_email, @abonent_address, @plan_id, @device_id)";
+                    using (SqlCommand command = new SqlCommand(query, database.getConnection()))
+                    {
+                        command.Parameters.AddWithValue("@first_name", first_name);
+                        command.Parameters.AddWithValue("@last_name", last_name);
+                        command.Parameters.AddWithValue("@abonent_phone", abonent_phone);
+                        command.Parameters.AddWithValue("@abonent_email", abonent_email);
+                        command.Parameters.AddWithValue("@abonent_address", abonent_address);
+                        command.Parameters.AddWithValue("@plan_id", plan_id);
+                        command.Parameters.AddWithValue("@device_id", device_id);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Абонента додано успішно!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Помилка додавання абонента: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    database.closeConnection();
+                    RefreshAbonentsDataGrid();
+                }
             }
         }
 
-
         private void pictureBoxDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell == null)
-            {
-                MessageBox.Show("Виберіть рядок для видалення!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int index = dataGridView1.CurrentCell.RowIndex;
-
-            if (dataGridView1.Rows[index].Cells[0].Value == null ||
-                string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
-            {
-                MessageBox.Show("Рядок не містить ідентифікатора для видалення!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int abonentId;
+            string abonentName = "";
             try
             {
-                abonentId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string firstName = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                string lastName = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                abonentName = $"{firstName} {lastName}";
             }
-            catch (FormatException)
-            {
-                MessageBox.Show("Ідентифікатор абонента має бути числом!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            catch { /* Якщо не вдалося отримати ім'я, просто показуємо загальне повідомлення */ }
 
-            database.openConnection();
-            try
+            string confirmMessage = string.IsNullOrEmpty(abonentName)
+                ? "Ви впевнені, що хочете видалити абонента?"
+                : $"Ви впевнені, що хочете видалити абонента {abonentName}?";
+
+            DialogResult result = MessageBox.Show(
+                confirmMessage,
+                "Підтвердження видалення",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
             {
-                string deleteQuery = "DELETE FROM [InternetServiceProviderDB].[service].[abonents] WHERE abonent_id = @abonent_id";
-                using (SqlCommand command = new SqlCommand(deleteQuery, database.getConnection()))
+                if (dataGridView1.CurrentCell == null)
                 {
-                    command.Parameters.AddWithValue("@abonent_id", abonentId);
-                    int rowsAffected = command.ExecuteNonQuery();
+                    MessageBox.Show("Виберіть рядок для видалення!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    if (rowsAffected > 0)
+                int index = dataGridView1.CurrentCell.RowIndex;
+
+                if (dataGridView1.Rows[index].Cells[0].Value == null ||
+                    string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
+                {
+                    MessageBox.Show("Рядок не містить ідентифікатора для видалення!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int abonentId;
+                try
+                {
+                    abonentId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Ідентифікатор абонента має бути числом!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                database.openConnection();
+                try
+                {
+                    string deleteQuery = "DELETE FROM [InternetServiceProviderDB].[service].[abonents] WHERE abonent_id = @abonent_id";
+                    using (SqlCommand command = new SqlCommand(deleteQuery, database.getConnection()))
                     {
-                        dataGridView1.Rows.RemoveAt(index);
-                        MessageBox.Show("Абонента успішно видалено!", "Успіх",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Не вдалося видалити абонента з бази!", "Помилка",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        command.Parameters.AddWithValue("@abonent_id", abonentId);
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            dataGridView1.Rows.RemoveAt(index);
+                            MessageBox.Show("Абонента успішно видалено!", "Успіх",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не вдалося видалити абонента з бази!", "Помилка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка при видаленні: {ex.Message}", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Помилка при видаленні: {ex.Message}", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell == null)
-            {
-                MessageBox.Show("Виберіть рядок для оновлення!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int index = dataGridView1.CurrentCell.RowIndex;
-
-            if (dataGridView1.Rows[index].Cells[0].Value == null ||
-                string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
-            {
-                MessageBox.Show("Рядок не містить ідентифікатора для оновлення!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int abonentId;
+            string abonentName = "";
             try
             {
-                abonentId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string firstName = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                string lastName = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                abonentName = $"{firstName} {lastName}";
             }
-            catch (FormatException)
+            catch { /* Якщо не вдалося отримати ім'я, просто показуємо загальне повідомлення */ }
+
+            string confirmMessage = string.IsNullOrEmpty(abonentName)
+                ? "Ви впевнені, що хочете редагувати абонента?"
+                : $"Ви впевнені, що хочете редагувати абонента {abonentName}?";
+
+            DialogResult result = MessageBox.Show(
+                confirmMessage,
+                "Підтвердження редагування",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Ідентифікатор абонента має бути числом!", "Помилка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (dataGridView1.CurrentCell == null)
+                {
+                    MessageBox.Show("Виберіть рядок для оновлення!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            database.openConnection();
+                int index = dataGridView1.CurrentCell.RowIndex;
 
-            string first_name = textBoxName.Text;
-            string last_name = textBoxLastName.Text;
-            string abonent_phone = textBoxTelephone.Text;
-            string abonent_email = textBoxEmail.Text;
-            string abonent_address = textBoxAddress.Text;
+                if (dataGridView1.Rows[index].Cells[0].Value == null ||
+                    string.IsNullOrEmpty(dataGridView1.Rows[index].Cells[0].Value.ToString()))
+                {
+                    MessageBox.Show("Рядок не містить ідентифікатора для оновлення!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
-            string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
+                int abonentId;
+                try
+                {
+                    abonentId = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Ідентифікатор абонента має бути числом!", "Помилка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            if (string.IsNullOrWhiteSpace(first_name) ||
-                string.IsNullOrWhiteSpace(last_name) ||
-                string.IsNullOrWhiteSpace(abonent_phone) ||
-                string.IsNullOrWhiteSpace(abonent_email) ||
-                string.IsNullOrWhiteSpace(abonent_address) ||
-                string.IsNullOrWhiteSpace(plan_id) ||
-                string.IsNullOrWhiteSpace(device_id))
-            {
-                MessageBox.Show("Всі поля обов'язкові для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                database.openConnection();
 
-            try
-            {
-                string query = @"UPDATE [InternetServiceProviderDB].[service].[abonents] 
+                string first_name = textBoxName.Text;
+                string last_name = textBoxLastName.Text;
+                string abonent_phone = textBoxTelephone.Text;
+                string abonent_email = textBoxEmail.Text;
+                string abonent_address = textBoxAddress.Text;
+
+                string plan_id = (comboBoxPlanID.SelectedItem as ComboBoxItem)?.Value;
+                string device_id = (comboBoxDeviceID.SelectedItem as ComboBoxItem)?.Value;
+
+                if (string.IsNullOrWhiteSpace(first_name) ||
+                    string.IsNullOrWhiteSpace(last_name) ||
+                    string.IsNullOrWhiteSpace(abonent_phone) ||
+                    string.IsNullOrWhiteSpace(abonent_email) ||
+                    string.IsNullOrWhiteSpace(abonent_address) ||
+                    string.IsNullOrWhiteSpace(plan_id) ||
+                    string.IsNullOrWhiteSpace(device_id))
+                {
+                    MessageBox.Show("Всі поля обов'язкові для заповнення.", "Помилка користувача", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                try
+                {
+                    string query = @"UPDATE [InternetServiceProviderDB].[service].[abonents] 
                 SET first_name = @first_name, 
                     last_name = @last_name, 
                     phone = @abonent_phone, 
@@ -392,45 +476,46 @@ namespace InternetServiceProvider
                     device_id = @device_id 
                 WHERE abonent_id = @abonent_id";
 
-                using (SqlCommand command = new SqlCommand(query, database.getConnection()))
-                {
-                    command.Parameters.AddWithValue("@abonent_id", abonentId);
-                    command.Parameters.AddWithValue("@first_name", first_name);
-                    command.Parameters.AddWithValue("@last_name", last_name);
-                    command.Parameters.AddWithValue("@abonent_phone", abonent_phone);
-                    command.Parameters.AddWithValue("@abonent_email", abonent_email);
-                    command.Parameters.AddWithValue("@abonent_address", abonent_address);
-                    command.Parameters.AddWithValue("@plan_id", plan_id);
-                    command.Parameters.AddWithValue("@device_id", device_id);
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    using (SqlCommand command = new SqlCommand(query, database.getConnection()))
                     {
-                        MessageBox.Show("Абонента було успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        command.Parameters.AddWithValue("@abonent_id", abonentId);
+                        command.Parameters.AddWithValue("@first_name", first_name);
+                        command.Parameters.AddWithValue("@last_name", last_name);
+                        command.Parameters.AddWithValue("@abonent_phone", abonent_phone);
+                        command.Parameters.AddWithValue("@abonent_email", abonent_email);
+                        command.Parameters.AddWithValue("@abonent_address", abonent_address);
+                        command.Parameters.AddWithValue("@plan_id", plan_id);
+                        command.Parameters.AddWithValue("@device_id", device_id);
 
-                        textBoxName.Clear();
-                        textBoxLastName.Clear();
-                        textBoxTelephone.Clear();
-                        textBoxEmail.Clear();
-                        textBoxAddress.Clear();
-                        comboBoxPlanID.SelectedIndex = -1;
-                        comboBoxDeviceID.SelectedIndex = -1;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Інформацію про абонента не було оновлено.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Абонента було успішно оновлено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            textBoxName.Clear();
+                            textBoxLastName.Clear();
+                            textBoxTelephone.Clear();
+                            textBoxEmail.Clear();
+                            textBoxAddress.Clear();
+                            comboBoxPlanID.SelectedIndex = -1;
+                            comboBoxDeviceID.SelectedIndex = -1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Інформацію про абонента не було оновлено.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Помилка оновлення абонента: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                database.closeConnection();
-                RefreshAbonentsDataGrid();
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Помилка оновлення абонента: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    database.closeConnection();
+                    RefreshAbonentsDataGrid();
+                }
             }
         }
 

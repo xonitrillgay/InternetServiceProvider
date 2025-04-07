@@ -87,6 +87,9 @@ namespace InternetServiceProvider
             this.techniciansTableAdapter.Fill(this.internetServiceProviderDBDataSet.technicians);
             адмінпанельToolStripMenuItem.Visible = (userRole == "admin");
 
+            button2.Visible = (userRole == "admin");
+            button3.Visible = (userRole == "admin");
+
             BeautifyDataGridView();
         }
 
@@ -218,8 +221,34 @@ namespace InternetServiceProvider
 
         private void button2_Click(object sender, EventArgs e)
         {
-            deleteRow();
-            ClearFields();
+            string technicianName = "";
+            try
+            {
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string firstName = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                string lastName = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                technicianName = $"{firstName} {lastName}";
+            }
+            catch { /* Якщо не вдалося отримати ім'я, просто показуємо загальне повідомлення */ }
+
+            string confirmMessage = string.IsNullOrEmpty(technicianName)
+                ? "Ви впевнені, що хочете видалити вибраного техніка?"
+                : $"Ви впевнені, що хочете видалити техніка {technicianName}?";
+
+            // Показуємо діалогове вікно підтвердження
+            DialogResult result = MessageBox.Show(
+                confirmMessage,
+                "Підтвердження видалення",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            // Продовжуємо, тільки якщо користувач обрав "Так"
+            if (result == DialogResult.Yes)
+            {
+                deleteRow();
+                ClearFields();
+            }
         }
 
         private void Change()
@@ -354,42 +383,66 @@ namespace InternetServiceProvider
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ClearFields();
+            string technicianName = "";
+            try
+            {
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string firstName = dataGridView1.Rows[rowIndex].Cells[1].Value.ToString();
+                string lastName = dataGridView1.Rows[rowIndex].Cells[2].Value.ToString();
+                technicianName = $"{firstName} {lastName}";
+            }
+            catch { /* Якщо не вдалося отримати ім'я, просто показуємо загальне повідомлення */ }
+
+            string confirmMessage = string.IsNullOrEmpty(technicianName)
+                ? "Ви впевнені, що хочете оновити інформацію про вибраного техніка?"
+                : $"Ви впевнені, що хочете оновити інформацію про техніка {technicianName}?";
+
+            DialogResult result = MessageBox.Show(
+                confirmMessage,
+                "Підтвердження редагування",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Change();
+            }
         }
 
         private void інтернетпланиToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Plans plansform = new Plans();
+            Plans plansform = new Plans(userRole);
             plansform.Show();
         }
 
         private void обладнанняToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Devices devicesform = new Devices();
+            Devices devicesform = new Devices(userRole);
             devicesform.Show();
         }
 
         private void запитиАбонентівToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Support_tickets ticketsform = new Support_tickets();
+            Support_tickets ticketsform = new Support_tickets(userRole);
             ticketsform.Show();
         }
 
         private void призначенняТехніківToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Technician_assignments assignmentsform = new Technician_assignments();
+            Technician_assignments assignmentsform = new Technician_assignments(userRole);
             assignmentsform.Show();
         }
 
         private void абонентиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Abonents abonentsform = new Abonents();
+            Abonents abonentsform = new Abonents(userRole);
             abonentsform.Show();
         }
 
         private void платежіToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaymentsHistory paymentsform = new PaymentsHistory();
+            PaymentsHistory paymentsform = new PaymentsHistory(userRole);
             paymentsform.Show();
         }
 
@@ -402,7 +455,6 @@ namespace InternetServiceProvider
                 MessageBoxIcon.Question
             );
 
-            // Якщо користувач обрав "Так", закриваємо програму
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
@@ -419,6 +471,25 @@ namespace InternetServiceProvider
         {
             AdminForm adminForm = new AdminForm();
             adminForm.ShowDialog();
+        }
+
+        private void авторизаціяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете вийти з облікового запису?",
+                "Підтвердження виходу з облікового запису",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+
+                Auth loginForm = new Auth();
+                loginForm.FormClosed += (s, args) => this.Close();
+                loginForm.Show();
+            }
         }
     }
 }

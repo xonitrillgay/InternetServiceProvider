@@ -41,6 +41,7 @@
             this.eyeOpen = new System.Windows.Forms.PictureBox();
             this.regLabel = new System.Windows.Forms.LinkLabel();
             this.closedEye = new System.Windows.Forms.PictureBox();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clearPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -173,11 +174,24 @@
             this.closedEye.TabStop = false;
             this.closedEye.Click += new System.EventHandler(this.closedEye_Click);
             // 
+            // buttonExit
+            // 
+            this.buttonExit.BackColor = System.Drawing.Color.MistyRose;
+            this.buttonExit.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonExit.Location = new System.Drawing.Point(45, 409);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(247, 29);
+            this.buttonExit.TabIndex = 14;
+            this.buttonExit.Text = "Завершити роботу програми";
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.closedEye);
             this.Controls.Add(this.regLabel);
             this.Controls.Add(this.eyeOpen);
@@ -189,7 +203,7 @@
             this.Controls.Add(this.login);
             this.Controls.Add(this.panel1);
             this.Name = "Auth";
-            this.Text = "Auth";
+            this.Text = "Авторизація";
             this.Load += new System.EventHandler(this.Auth_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -216,5 +230,6 @@
         private System.Windows.Forms.PictureBox eyeOpen;
         private System.Windows.Forms.LinkLabel regLabel;
         private System.Windows.Forms.PictureBox closedEye;
+        private System.Windows.Forms.Button buttonExit;
     }
 }

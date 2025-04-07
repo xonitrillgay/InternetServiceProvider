@@ -47,20 +47,20 @@
             this.comboBoxAbonent = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.paymentHistoryDataSet = new InternetServiceProvider.PaymentHistoryDataSet();
-            this.paymenthistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.payment_historyTableAdapter = new InternetServiceProvider.PaymentHistoryDataSetTableAdapters.payment_historyTableAdapter();
             this.paymentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abonentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ticketidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymenthistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.paymentHistoryDataSet = new InternetServiceProvider.PaymentHistoryDataSet();
+            this.payment_historyTableAdapter = new InternetServiceProvider.PaymentHistoryDataSetTableAdapters.payment_historyTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClear)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentHistoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymenthistoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentHistoryDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxClear
@@ -258,20 +258,6 @@
             this.dataGridView1.TabIndex = 38;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // paymentHistoryDataSet
-            // 
-            this.paymentHistoryDataSet.DataSetName = "PaymentHistoryDataSet";
-            this.paymentHistoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // paymenthistoryBindingSource
-            // 
-            this.paymenthistoryBindingSource.DataMember = "payment_history";
-            this.paymenthistoryBindingSource.DataSource = this.paymentHistoryDataSet;
-            // 
-            // payment_historyTableAdapter
-            // 
-            this.payment_historyTableAdapter.ClearBeforeFill = true;
-            // 
             // paymentidDataGridViewTextBoxColumn
             // 
             this.paymentidDataGridViewTextBoxColumn.DataPropertyName = "payment_id";
@@ -309,6 +295,20 @@
             this.ticketidDataGridViewTextBoxColumn.HeaderText = "ticket_id";
             this.ticketidDataGridViewTextBoxColumn.Name = "ticketidDataGridViewTextBoxColumn";
             // 
+            // paymenthistoryBindingSource
+            // 
+            this.paymenthistoryBindingSource.DataMember = "payment_history";
+            this.paymenthistoryBindingSource.DataSource = this.paymentHistoryDataSet;
+            // 
+            // paymentHistoryDataSet
+            // 
+            this.paymentHistoryDataSet.DataSetName = "PaymentHistoryDataSet";
+            this.paymentHistoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // payment_historyTableAdapter
+            // 
+            this.payment_historyTableAdapter.ClearBeforeFill = true;
+            // 
             // PaymentsHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,14 +321,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Name = "PaymentsHistory";
-            this.Text = "PaymentsHistory";
+            this.Text = "Історія платежів";
             this.Load += new System.EventHandler(this.PaymentsHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClear)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentHistoryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymenthistoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentHistoryDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

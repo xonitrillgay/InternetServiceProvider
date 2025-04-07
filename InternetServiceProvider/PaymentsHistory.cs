@@ -16,11 +16,16 @@ namespace InternetServiceProvider
     {
         private DataBase database = new DataBase();
         private int selectedPaymentId = -1;
+        private string userRole = "user"; // Default role
 
-        public PaymentsHistory()
+        public PaymentsHistory(string role = "user")
         {
             InitializeComponent();
+            this.userRole = role.Trim();
             this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        public PaymentsHistory() : this("user")
+        {
         }
 
         private void BeautifyDataGridView()
@@ -79,6 +84,9 @@ namespace InternetServiceProvider
             LoadAbonentsComboBox();
             LoadTicketsComboBox();
             SetupPaymentMethodsComboBox();
+
+            bool isAdmin = (userRole.ToLower() == "admin");
+            buttonUpdate.Visible = isAdmin;
 
             radioButtonStatus.Checked = false;
             dateTimePickerPaymentDate.Enabled = false;

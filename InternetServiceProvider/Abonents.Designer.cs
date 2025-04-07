@@ -93,7 +93,7 @@
             this.deviceidDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.abonentsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 253);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 285);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -166,44 +166,49 @@
             // 
             // textBoxName
             // 
+            this.textBoxName.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxName.Location = new System.Drawing.Point(179, 22);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(185, 20);
+            this.textBoxName.Size = new System.Drawing.Size(185, 25);
             this.textBoxName.TabIndex = 1;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(179, 48);
+            this.textBoxLastName.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxLastName.Location = new System.Drawing.Point(179, 55);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(185, 20);
+            this.textBoxLastName.Size = new System.Drawing.Size(185, 25);
             this.textBoxLastName.TabIndex = 2;
             // 
             // textBoxTelephone
             // 
-            this.textBoxTelephone.Location = new System.Drawing.Point(179, 74);
+            this.textBoxTelephone.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTelephone.Location = new System.Drawing.Point(179, 86);
             this.textBoxTelephone.Name = "textBoxTelephone";
-            this.textBoxTelephone.Size = new System.Drawing.Size(185, 20);
+            this.textBoxTelephone.Size = new System.Drawing.Size(185, 25);
             this.textBoxTelephone.TabIndex = 3;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(179, 100);
+            this.textBoxEmail.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEmail.Location = new System.Drawing.Point(179, 117);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(185, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(185, 25);
             this.textBoxEmail.TabIndex = 4;
             // 
             // textBoxAddress
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(179, 126);
+            this.textBoxAddress.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxAddress.Location = new System.Drawing.Point(179, 148);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(185, 20);
+            this.textBoxAddress.Size = new System.Drawing.Size(185, 25);
             this.textBoxAddress.TabIndex = 5;
             // 
             // firstName
             // 
             this.firstName.AutoSize = true;
-            this.firstName.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.firstName.Location = new System.Drawing.Point(17, 22);
+            this.firstName.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firstName.Location = new System.Drawing.Point(14, 29);
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(38, 18);
             this.firstName.TabIndex = 6;
@@ -212,40 +217,40 @@
             // lastName
             // 
             this.lastName.AutoSize = true;
-            this.lastName.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lastName.Location = new System.Drawing.Point(17, 48);
+            this.lastName.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lastName.Location = new System.Drawing.Point(14, 62);
             this.lastName.Name = "lastName";
-            this.lastName.Size = new System.Drawing.Size(77, 18);
+            this.lastName.Size = new System.Drawing.Size(80, 18);
             this.lastName.TabIndex = 7;
             this.lastName.Text = "Прізвище";
             // 
             // phone
             // 
             this.phone.AutoSize = true;
-            this.phone.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phone.Location = new System.Drawing.Point(17, 74);
+            this.phone.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phone.Location = new System.Drawing.Point(14, 93);
             this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(68, 18);
+            this.phone.Size = new System.Drawing.Size(74, 18);
             this.phone.TabIndex = 8;
             this.phone.Text = "Телефон";
             // 
             // email
             // 
             this.email.AutoSize = true;
-            this.email.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.email.Location = new System.Drawing.Point(17, 100);
+            this.email.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.email.Location = new System.Drawing.Point(14, 124);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(155, 18);
+            this.email.Size = new System.Drawing.Size(162, 18);
             this.email.TabIndex = 9;
             this.email.Text = "Електронна пошта";
             // 
             // address
             // 
             this.address.AutoSize = true;
-            this.address.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.address.Location = new System.Drawing.Point(17, 126);
+            this.address.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.address.Location = new System.Drawing.Point(14, 156);
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(56, 18);
+            this.address.Size = new System.Drawing.Size(62, 18);
             this.address.TabIndex = 10;
             this.address.Text = "Адреса";
             // 
@@ -268,43 +273,45 @@
             this.panel1.Controls.Add(this.textBoxName);
             this.panel1.Location = new System.Drawing.Point(25, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(391, 224);
+            this.panel1.Size = new System.Drawing.Size(391, 256);
             this.panel1.TabIndex = 11;
             // 
             // labelDeviceID
             // 
             this.labelDeviceID.AutoSize = true;
-            this.labelDeviceID.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDeviceID.Location = new System.Drawing.Point(17, 182);
+            this.labelDeviceID.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDeviceID.Location = new System.Drawing.Point(14, 222);
             this.labelDeviceID.Name = "labelDeviceID";
-            this.labelDeviceID.Size = new System.Drawing.Size(86, 18);
+            this.labelDeviceID.Size = new System.Drawing.Size(90, 18);
             this.labelDeviceID.TabIndex = 21;
             this.labelDeviceID.Text = "ID девайсу";
             // 
             // comboBoxDeviceID
             // 
+            this.comboBoxDeviceID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxDeviceID.FormattingEnabled = true;
-            this.comboBoxDeviceID.Location = new System.Drawing.Point(179, 179);
+            this.comboBoxDeviceID.Location = new System.Drawing.Point(179, 214);
             this.comboBoxDeviceID.Name = "comboBoxDeviceID";
-            this.comboBoxDeviceID.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxDeviceID.Size = new System.Drawing.Size(185, 26);
             this.comboBoxDeviceID.TabIndex = 20;
             // 
             // labelPlanID
             // 
             this.labelPlanID.AutoSize = true;
-            this.labelPlanID.Font = new System.Drawing.Font("Georgia", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPlanID.Location = new System.Drawing.Point(17, 155);
+            this.labelPlanID.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPlanID.Location = new System.Drawing.Point(14, 190);
             this.labelPlanID.Name = "labelPlanID";
-            this.labelPlanID.Size = new System.Drawing.Size(124, 18);
+            this.labelPlanID.Size = new System.Drawing.Size(129, 18);
             this.labelPlanID.TabIndex = 20;
             this.labelPlanID.Text = "Інтернет-план";
             // 
             // comboBoxPlanID
             // 
+            this.comboBoxPlanID.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxPlanID.FormattingEnabled = true;
-            this.comboBoxPlanID.Location = new System.Drawing.Point(179, 152);
+            this.comboBoxPlanID.Location = new System.Drawing.Point(179, 182);
             this.comboBoxPlanID.Name = "comboBoxPlanID";
-            this.comboBoxPlanID.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxPlanID.Size = new System.Drawing.Size(185, 26);
             this.comboBoxPlanID.TabIndex = 11;
             // 
             // pictureBoxCreate
@@ -334,20 +341,20 @@
             // labelCreate
             // 
             this.labelCreate.AutoSize = true;
-            this.labelCreate.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCreate.Location = new System.Drawing.Point(481, 206);
+            this.labelCreate.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCreate.Location = new System.Drawing.Point(474, 206);
             this.labelCreate.Name = "labelCreate";
-            this.labelCreate.Size = new System.Drawing.Size(61, 16);
+            this.labelCreate.Size = new System.Drawing.Size(69, 18);
             this.labelCreate.TabIndex = 16;
             this.labelCreate.Text = "Додати";
             // 
             // labelDelete
             // 
             this.labelDelete.AutoSize = true;
-            this.labelDelete.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelDelete.Location = new System.Drawing.Point(615, 206);
+            this.labelDelete.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDelete.Location = new System.Drawing.Point(608, 206);
             this.labelDelete.Name = "labelDelete";
-            this.labelDelete.Size = new System.Drawing.Size(76, 16);
+            this.labelDelete.Size = new System.Drawing.Size(86, 18);
             this.labelDelete.TabIndex = 17;
             this.labelDelete.Text = "Видалити";
             // 
@@ -366,10 +373,10 @@
             // labelUpdate
             // 
             this.labelUpdate.AutoSize = true;
-            this.labelUpdate.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUpdate.Location = new System.Drawing.Point(764, 206);
+            this.labelUpdate.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdate.Location = new System.Drawing.Point(757, 206);
             this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(68, 16);
+            this.labelUpdate.Size = new System.Drawing.Size(78, 18);
             this.labelUpdate.TabIndex = 19;
             this.labelUpdate.Text = "Оновити";
             // 
@@ -388,7 +395,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 554);
+            this.ClientSize = new System.Drawing.Size(874, 586);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.labelUpdate);
             this.Controls.Add(this.pictureBox1);
@@ -399,7 +406,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Abonents";
-            this.Text = "Abonents";
+            this.Text = "Абоненти";
             this.Load += new System.EventHandler(this.Abonents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonentsBindingSource)).EndInit();

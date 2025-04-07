@@ -135,5 +135,20 @@ namespace InternetServiceProvider
                 okButton.PerformClick();
             }
         }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Ви впевнені, що хочете вийти з програми?",
+                "Підтвердження виходу",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
